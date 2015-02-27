@@ -1,0 +1,30 @@
+{
+  "name": "endelwar/gestpayws",
+  "type": "library",
+  "description": "PHP implementation of GestPay (Banca Sella) Web Services",
+  "keywords": ["gestpay","bancasella"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Manuel Dalla Lana",
+      "email": "endelwar@aregar.it"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "EndelWar\\GestPayWS\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "EndelWar\\GestPayWS\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=5.3.3",
+    "ext-soap": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.5"
+  }
+}
