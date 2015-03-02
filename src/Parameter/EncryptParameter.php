@@ -97,7 +97,7 @@ class EncryptParameter extends Parameter
         '%',
         '//'
     );
-    private $invalidCharsFlattened = false;
+    private $invalidCharsFlattened = '';
 
     public function __construct(array $parameters = array())
     {
@@ -184,7 +184,7 @@ class EncryptParameter extends Parameter
      */
     public function verifyParameterValidity($value)
     {
-        if (!$this->invalidCharsFlattened) {
+        if (strlen($this->invalidCharsFlattened) == 0) {
             $invalidCharsQuoted = array_map('preg_quote', $this->invalidChars);
             $this->invalidCharsFlattened = implode('|', $invalidCharsQuoted);
         }
