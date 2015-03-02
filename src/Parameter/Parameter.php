@@ -112,7 +112,7 @@ abstract class Parameter implements \ArrayAccess
      */
     public function __get($key)
     {
-        $getter = 'get' . str_replace(" ", "", ucwords(strtr($key, "_-", " ")));
+        $getter = 'get' . $this->classify($key);
         if (method_exists($this, $getter)) {
             return call_user_func(array($this, $getter));
         }
@@ -124,15 +124,28 @@ abstract class Parameter implements \ArrayAccess
      * Magic setter, calls getXXX if exists.
      * @param $key
      * @param $value
+     *
      * @return mixed
      */
     public function __set($key, $value)
     {
-        $setter = 'set' . str_replace(" ", "", ucwords(strtr($key, "_-", " ")));
+        $setter = 'set' . $this->classify($key);
         if (method_exists($this, $setter)) {
             return call_user_func_array(array($this, $setter), array($value));
         }
         $this->set($key, $value);
+    }
+
+    /**
+     * Converts a string into a CamelCase word.
+     *
+     * @param string $string The string to classify.
+     *
+     * @return string The classified word.
+     */
+    private function classify($string)
+    {
+        return str_replace(' ', '', ucwords(strtr($string, "_-", " ")));
     }
 
     /**
