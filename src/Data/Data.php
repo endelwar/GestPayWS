@@ -14,7 +14,7 @@ namespace EndelWar\GestPayWS\Data;
  * Class Data
  * @package EndelWar\GestPayWS\Data
  */
-class Data
+abstract class Data
 {
     /**
      * @param $costantName
