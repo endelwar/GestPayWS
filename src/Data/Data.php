@@ -8,11 +8,11 @@
  * with this source code in the file LICENSE.
  */
 
-namespace EndelWar\GestPayWS;
+namespace EndelWar\GestPayWS\Data;
 
 /**
  * Class Data
- * @package EndelWar\GestPayWS
+ * @package EndelWar\GestPayWS\Data
  */
 class Data
 {
@@ -24,10 +24,9 @@ class Data
     {
         $costantName = strtoupper($costantName);
         if (defined("static::$costantName")) {
-
             return constant("static::$costantName");
         }
 
         return false;
     }
-} 
+}

@@ -8,11 +8,11 @@
  * with this source code in the file LICENSE.
  */
 
-namespace EndelWar\GestPayWS;
+namespace EndelWar\GestPayWS\Data;
 
 /**
- * Class PaymentTypes
- * @package EndelWar\GestPayWS
+ * Class PaymentType
+ * @package EndelWar\GestPayWS\Data
  */
 class PaymentType extends Data
 {

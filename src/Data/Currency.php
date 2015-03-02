@@ -8,11 +8,11 @@
  * with this source code in the file LICENSE.
  */
 
-namespace EndelWar\GestPayWS;
+namespace EndelWar\GestPayWS\Data;
 
 /**
  * Class Currency
- * @package EndelWar\GestPayWS
+ * @package EndelWar\GestPayWS\Data
  */
 class Currency extends Data
 {

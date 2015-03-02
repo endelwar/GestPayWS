@@ -8,11 +8,11 @@
  * with this source code in the file LICENSE.
  */
 
-namespace EndelWar\GestPayWS;
+namespace EndelWar\GestPayWS\Data;
 
 /**
  * Class Language
- * @package EndelWar\GestPayWS
+ * @package EndelWar\GestPayWS\Data
  */
 class Language extends Data
 {
