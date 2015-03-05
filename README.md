@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/endelwar/GestPayWS.svg?branch=master)](https://travis-ci.org/endelwar/GestPayWS)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/endelwar/GestPayWS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/endelwar/GestPayWS/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/endelwar/GestPayWS/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/endelwar/GestPayWS/?branch=master)
-[![License](https://poser.pugx.org/endelwar/gestpayws/license.svg)](https://packagist.org/packages/endelwar/gestpayws)
+[![License](https://img.shields.io/packagist/l/endelwar/gestpayws.svg)](https://packagist.org/packages/endelwar/gestpayws)
 
 PHP implementation of GestPay (Banca Sella) Web services
 
