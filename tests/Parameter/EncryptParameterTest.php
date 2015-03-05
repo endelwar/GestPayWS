@@ -193,4 +193,32 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
         $encryptParamArray = new EncryptParameter($this->validData);
         $this->assertArraySubset($this->validData, $encryptParamArray->toArray());
     }
+
+    /* *** testing ArrayAccess *** */
+    public function testOffsetSet()
+    {
+        $this->encryptParam->offsetSet('shopLogin', 'GESPAY60861');
+        $this->assertEquals($this->encryptParam->get('shopLogin'), 'GESPAY60861');
+    }
+
+    public function testOffsetUnset()
+    {
+        $encryptParamArray = new EncryptParameter($this->validData);
+        $encryptParamArray->offsetUnset('shopLogin'); //unset($encryptParamArray->shopLogin);
+        $this->assertNull($encryptParamArray->get('shopLogin'));
+    }
+
+    public function testUnset()
+    {
+        $encryptParamArray = new EncryptParameter($this->validData);
+        unset($encryptParamArray->shopLogin);
+        $this->assertNull($encryptParamArray->get('shopLogin'));
+    }
+
+    public function testOffsetExists()
+    {
+        $encryptParamArray = new EncryptParameter($this->validData);
+        $this->assertTrue($encryptParamArray->offsetExists('shopLogin'));
+        $this->assertFalse($encryptParamArray->offsetExists('iDontExist'));
+    }
 }
