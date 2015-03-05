@@ -136,13 +136,14 @@ class EncryptParameter extends Parameter
             //check string validity
 
             foreach ($customInfo as $key => $value) {
+                $value = urlencode($value);
                 $this->verifyParameterValidity($key);
                 $this->verifyParameterValidity($value);
 
                 if (strlen($value) > 300) {
                     $value = substr($value, 0, 300);
                 }
-                $customInfo[$key] = urlencode($value);
+                $customInfo[$key] = $value;
             }
             $this->customInfoArray = $customInfo;
             $this->parameters['customInfo'] = http_build_query($this->customInfoArray, '', $this->separator);
@@ -192,7 +193,7 @@ class EncryptParameter extends Parameter
         if (preg_match_all('#' . $this->invalidCharsFlattened . '#', $value, $matches)) {
             $invalidCharsMatched = implode(', ', $matches[0]);
             throw new InvalidArgumentException(
-                sprintf('String %s contains invalid chars (i.e.: ' . $invalidCharsMatched . ').', $value)
+                sprintf('String %s contains invalid chars (i.e.: "' . $invalidCharsMatched . '").', $value)
             );
         }
 
