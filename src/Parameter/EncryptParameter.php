@@ -191,9 +191,9 @@ class EncryptParameter extends Parameter
         }
 
         if (preg_match_all('#' . $this->invalidCharsFlattened . '#', $value, $matches)) {
-            $invalidCharsMatched = implode(', ', $matches[0]);
+            $invalidCharsMatched = '"' . implode('", "', $matches[0]) . '"';
             throw new InvalidArgumentException(
-                sprintf('String %s contains invalid chars (i.e.: "' . $invalidCharsMatched . '").', $value)
+                'String ' . $value . ' contains invalid chars (i.e.: ' . $invalidCharsMatched . ').'
             );
         }
 
