@@ -33,17 +33,30 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
     {
         $this->encryptParam->set('shopLogin', 'GESPAY60861');
         $this->assertEquals($this->encryptParam->shopLogin, 'GESPAY60861');
+        $this->assertEquals($this->encryptParam['shopLogin'], 'GESPAY60861');
+
+        $this->encryptParam['uicCode'] = Currency::EUR;
+        $this->assertEquals($this->encryptParam->uicCode, Currency::EUR);
+        $this->assertEquals($this->encryptParam['uicCode'], Currency::EUR);
+
+        $this->encryptParam->amount = 1.23;
+        $this->assertEquals($this->encryptParam->amount, 1.23);
+        $this->assertEquals($this->encryptParam['amount'], 1.23);
     }
 
     public function testGet()
     {
         $this->encryptParam->set('shopLogin', 'GESPAY60861');
         $this->assertEquals($this->encryptParam->get('shopLogin'), 'GESPAY60861');
+        $this->assertEquals($this->encryptParam['shopLogin'], 'GESPAY60861');
+        $this->assertEquals($this->encryptParam->offsetGet('shopLogin'), 'GESPAY60861');
     }
 
     public function testGetNotExists()
     {
         $this->assertNull($this->encryptParam->get('iDontExist'));
+        $this->assertNull($this->encryptParam['iDontExist']);
+        $this->assertNull($this->encryptParam->offsetGet('iDontExist'));
     }
 
     /**
