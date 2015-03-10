@@ -16,13 +16,13 @@ namespace EndelWar\GestPayWS\Data;
  */
 class PaymentType extends Data
 {
-    const MoneyTransfer = 'BON';
-    const CreditCard = 'CREDITCARD';
-    const PayPal = 'PAYPAL';
-    const MyBank = 'MYBANK';
-    const MobileQRCode = 'UPMOBILE';
-    const MasterPass = 'MASTERPASS';
-    const Sofort = 'SOFORT';
-    const Ideal = 'IDEAL';
-    const Consel = 'CONSEL';
+    const MONEYTRANSFER = 'BON';
+    const CREDITCARD = 'CREDITCARD';
+    const PAYPAL = 'PAYPAL';
+    const MYBANK = 'MYBANK';
+    const MOBILEQRCODE = 'UPMOBILE';
+    const MASTERPASS = 'MASTERPASS';
+    const SOFORT = 'SOFORT';
+    const IDEAL = 'IDEAL';
+    const CONSEL = 'CONSEL';
 }
