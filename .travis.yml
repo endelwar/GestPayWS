@@ -1,5 +1,7 @@
 language: php
 
+sudo: false
+
 cache:
   directories:
     - $HOME/.composer/cache
@@ -20,9 +22,13 @@ matrix:
 
 before_script:
     - composer self-update
-    - composer install --dev
+    - composer install
+    - bin/composer install
     - mkdir -p build/logs
 
 after_script:
     - wget https://scrutinizer-ci.com/ocular.phar
     - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
+
+git:
+  depth: 5
