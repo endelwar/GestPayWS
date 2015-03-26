@@ -23,7 +23,6 @@ matrix:
 before_script:
     - composer self-update
     - composer install
-    - bin/composer install
     - mkdir -p build/logs
 
 after_script:
