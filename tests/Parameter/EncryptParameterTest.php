@@ -31,25 +31,25 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
 
     public function testSet()
     {
-        $this->encryptParam->set('shopLogin', 'GESPAY60861');
-        $this->assertEquals($this->encryptParam->shopLogin, 'GESPAY60861');
-        $this->assertEquals($this->encryptParam['shopLogin'], 'GESPAY60861');
+        $this->encryptParam->set('shopLogin', $this->validData['shopLogin']);
+        $this->assertEquals($this->encryptParam->shopLogin, $this->validData['shopLogin']);
+        $this->assertEquals($this->encryptParam['shopLogin'], $this->validData['shopLogin']);
 
         $this->encryptParam['uicCode'] = Currency::EUR;
         $this->assertEquals($this->encryptParam->uicCode, Currency::EUR);
         $this->assertEquals($this->encryptParam['uicCode'], Currency::EUR);
 
-        $this->encryptParam->amount = 1.23;
-        $this->assertEquals($this->encryptParam->amount, 1.23);
-        $this->assertEquals($this->encryptParam['amount'], 1.23);
+        $this->encryptParam->amount = $this->validData['amount'];
+        $this->assertEquals($this->encryptParam->amount, $this->validData['amount']);
+        $this->assertEquals($this->encryptParam['amount'], $this->validData['amount']);
     }
 
     public function testGet()
     {
-        $this->encryptParam->set('shopLogin', 'GESPAY60861');
-        $this->assertEquals($this->encryptParam->get('shopLogin'), 'GESPAY60861');
-        $this->assertEquals($this->encryptParam['shopLogin'], 'GESPAY60861');
-        $this->assertEquals($this->encryptParam->offsetGet('shopLogin'), 'GESPAY60861');
+        $this->encryptParam->set('shopLogin', $this->validData['shopLogin']);
+        $this->assertEquals($this->encryptParam->get('shopLogin'), $this->validData['shopLogin']);
+        $this->assertEquals($this->encryptParam['shopLogin'], $this->validData['shopLogin']);
+        $this->assertEquals($this->encryptParam->offsetGet('shopLogin'), $this->validData['shopLogin']);
     }
 
     public function testGetNotExists()
@@ -111,14 +111,14 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
     public function testConstructFromArray()
     {
         $encryptParamArray = new EncryptParameter($this->validData);
-        $this->assertEquals($encryptParamArray->get('shopLogin'), 'GESPAY60861');
+        $this->assertEquals($encryptParamArray->get('shopLogin'), $this->validData['shopLogin']);
         $this->assertEquals($encryptParamArray->get('uicCode'), Currency::EUR);
-        $this->assertEquals($encryptParamArray->get('amount'), 1.23);
-        $this->assertEquals($encryptParamArray->get('shopTransactionId'), 123);
-        $this->assertEquals($encryptParamArray->shopLogin, 'GESPAY60861');
+        $this->assertEquals($encryptParamArray->get('amount'), $this->validData['amount']);
+        $this->assertEquals($encryptParamArray->get('shopTransactionId'), $this->validData['shopTransactionId']);
+        $this->assertEquals($encryptParamArray->shopLogin, $this->validData['shopLogin']);
         $this->assertEquals($encryptParamArray->uicCode, Currency::EUR);
-        $this->assertEquals($encryptParamArray->amount, 1.23);
-        $this->assertEquals($encryptParamArray->shopTransactionId, 123);
+        $this->assertEquals($encryptParamArray->amount, $this->validData['amount']);
+        $this->assertEquals($encryptParamArray->shopTransactionId, $this->validData['shopTransactionId']);
     }
 
     public function testGetCustomInfoToArray()
@@ -137,7 +137,7 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
     {
         $data = array(
             'uicCode' => Currency::EUR,
-            'shopTransactionId' => 123
+            'shopTransactionId' => $this->validData['shopTransactionId']
         );
         $encryptParamArray = new EncryptParameter($data);
         $this->assertFalse($encryptParamArray->areAllMandatoryParametersSet());
@@ -154,10 +154,10 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
     public function goodValuesProvider()
     {
         return array(
-            array('GESPAY60861'),
+            array($this->validData['shopLogin']),
             array(Currency::EUR),
-            array(1.23),
-            array(123)
+            array($this->validData['amount']),
+            array($this->validData['shopTransactionId'])
         );
     }
 
@@ -197,14 +197,14 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
     /* *** testing ArrayAccess *** */
     public function testOffsetSet()
     {
-        $this->encryptParam->offsetSet('shopLogin', 'GESPAY60861');
-        $this->assertEquals($this->encryptParam->get('shopLogin'), 'GESPAY60861');
+        $this->encryptParam->offsetSet('shopLogin', $this->validData['shopLogin']);
+        $this->assertEquals($this->encryptParam->get('shopLogin'), $this->validData['shopLogin']);
     }
 
     public function testOffsetUnset()
     {
         $encryptParamArray = new EncryptParameter($this->validData);
-        $encryptParamArray->offsetUnset('shopLogin'); //unset($encryptParamArray->shopLogin);
+        $encryptParamArray->offsetUnset('shopLogin');
         $this->assertNull($encryptParamArray->get('shopLogin'));
     }
 
