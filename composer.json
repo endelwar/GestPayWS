@@ -10,6 +10,9 @@
       "email": "endelwar@aregar.it"
     }
   ],
+  "support": {
+    "issues": "https://github.com/endelwar/GestPayWS/issues"
+  },
   "autoload": {
     "psr-4": {
       "EndelWar\\GestPayWS\\": "src/"
