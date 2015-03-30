@@ -122,7 +122,7 @@ class EncryptParameter extends Parameter
             throw new InvalidArgumentException(sprintf('%s is not a valid parameter name.', $key));
         }
         $this->verifyParameterValidity($value);
-        $this->parameters[$key] = $value;
+        parent::set($key, $value);
     }
 
     /**
