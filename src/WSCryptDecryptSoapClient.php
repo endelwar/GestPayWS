@@ -52,7 +52,8 @@ class WSCryptDecryptSoapClient
     {
         $soapClientDefaultOption = array(
             'user_agent' => 'EndelWar-GestPayWS/0.1 (+https://github.com/endelwar/GestPayWS)',
-            'stream_context' => $this->getStreamContext($testEnv)
+            'stream_context' => $this->getStreamContext($testEnv),
+            'connection_timeout' => 3000,
         );
         if ($testEnv) {
             $soapClientEnvironmentOption = $this->setTestEnvironment();
