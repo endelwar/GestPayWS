@@ -37,13 +37,7 @@ class EncryptResponse extends Response
     public function __construct($soapResponse)
     {
         $xml = simplexml_load_string($soapResponse->EncryptResult->any);
-        if ((int)$xml->ErrorCode != 0) {
-            throw new \Exception((string)$xml->ErrorDescription, (int)$xml->ErrorCode);
-        }
-
-        foreach ($this->parametersName as $param) {
-            $this->set($param, (string)$xml->$param);
-        }
+        parent::__construct($xml);
     }
 
     public function getPaymentPageUrl($shopLogin, $wsdlEnvironment)
