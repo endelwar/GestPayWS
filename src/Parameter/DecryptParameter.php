@@ -25,4 +25,14 @@ class DecryptParameter extends Parameter
         'shopLogin',
         'CryptedString'
     );
+
+    public function __construct(array $parameters = array())
+    {
+        foreach ($this->parametersName as $parameterName) {
+            $this->parameters[$parameterName] = null;
+        }
+        if (!empty($parameters)) {
+            $this->fromArray($parameters);
+        }
+    }
 }
