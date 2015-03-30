@@ -27,7 +27,6 @@ class EncryptResponseTest extends \PHPUnit_Framework_TestCase
         $this->goodEncryptResonse = new EncryptResponse($this->goodSoapResponse);
     }
 
-
     public function testToArray()
     {
         $resultArray = $this->goodEncryptResonse->toArray();
