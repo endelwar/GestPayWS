@@ -101,15 +101,9 @@ class EncryptParameter extends Parameter
 
     public function __construct(array $parameters = array())
     {
-        foreach ($this->parametersName as $parameterName) {
-            $this->parameters[$parameterName] = null;
-        }
-
         $this->invalidChars[] = chr(167); //§ ascii char
 
-        if (!empty($parameters)) {
-            $this->fromArray($parameters);
-        }
+        parent::__construct($parameters);
     }
 
     /**

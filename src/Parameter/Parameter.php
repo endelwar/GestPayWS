@@ -23,6 +23,19 @@ abstract class Parameter implements \ArrayAccess
     protected $mandatoryParameters = array();
 
     /**
+     * @param array $parameters
+     */
+    public function __construct(array $parameters = array())
+    {
+        foreach ($this->parametersName as $parameterName) {
+            $this->set($parameterName, null);
+        }
+        if (!empty($parameters)) {
+            $this->fromArray($parameters);
+        }
+    }
+
+    /**
      * @param string $key
      * @param mixed $value
      */
