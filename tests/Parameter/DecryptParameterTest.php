@@ -36,6 +36,18 @@ class DecryptParameterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->CryptedString, $this->decryptParam->offsetGet('CryptedString'));
     }
 
+    public function testGet()
+    {
+        $this->decryptParam->fromArray(
+            array(
+                'shopLogin' => $this->shopLogin,
+                'CryptedString' => $this->CryptedString
+            )
+        );
+        $this->assertEquals($this->CryptedString, $this->decryptParam->CryptedString);
+        $this->assertEquals($this->shopLogin, $this->decryptParam->shopLogin);
+    }
+
     public function testToArray()
     {
         $expect = array(
