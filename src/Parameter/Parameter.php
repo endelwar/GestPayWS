@@ -1,5 +1,12 @@
 <?php
-
+/*
+ * This file is part of the GestPayWS library.
+ *
+ * (c) Manuel Dalla Lana <endelwar@aregar.it>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
 namespace EndelWar\GestPayWS\Parameter;
 
@@ -13,6 +20,7 @@ abstract class Parameter implements \ArrayAccess
 {
     protected $parameters = array();
     protected $parametersName = array();
+    protected $mandatoryParameters = array();
 
     /**
      * @param string $key
@@ -56,6 +64,20 @@ abstract class Parameter implements \ArrayAccess
     public function toArray()
     {
         return $this->parameters;
+    }
+
+    /**
+     * @return bool
+     */
+    public function areAllMandatoryParametersSet()
+    {
+        foreach ($this->mandatoryParameters as $param) {
+            if (!isset($this->$param)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**

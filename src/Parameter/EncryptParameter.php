@@ -166,20 +166,6 @@ class EncryptParameter extends Parameter
     }
 
     /**
-     * @return bool
-     */
-    public function areAllMandatoryParametersSet()
-    {
-        foreach ($this->mandatoryParameters as $param) {
-            if (!isset($this->$param)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    /**
      * @param $value
      * @return bool
      */
