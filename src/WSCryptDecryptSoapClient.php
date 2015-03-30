@@ -35,8 +35,9 @@ class WSCryptDecryptSoapClient
         'ssl' => array(
             'ciphers' => 'DES-CBC3-SHA:RC4-SHA:RC4-MD5',
             'SNI_enabled' => true,
-            'verify_peer' => true,
-            'verify_depth' => 5,
+            // TODO: something needs to be worked out on php < 5.6 on ssl cert verify
+            //'verify_peer' => true,
+            //'verify_depth' => 5,
         ),
     );
     protected $certificatePeerName = array(
