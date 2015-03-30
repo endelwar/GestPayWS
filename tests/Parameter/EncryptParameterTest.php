@@ -165,7 +165,7 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
      * @dataProvider badValuesProvider
      * @expectedException InvalidArgumentException
      */
-    public function testVerifiParameterValidityException($value)
+    public function testVerifyParameterValidityException($value)
     {
         $this->encryptParam->verifyParameterValidity($value);
     }
