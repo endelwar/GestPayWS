@@ -57,6 +57,16 @@ abstract class Response implements \ArrayAccess
     }
 
     /**
+     * @param array $data
+     */
+    public function fromArray($data)
+    {
+        foreach ($data as $key => $value) {
+            $this->set($key, $value);
+        }
+    }
+
+    /**
      * Returns whether the requested index exists
      *
      * @param string $key
