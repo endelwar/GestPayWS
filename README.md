@@ -1,4 +1,4 @@
-#GestPayWS
+# GestPayWS
 
 [![Latest Stable Version](https://poser.pugx.org/endelwar/gestpayws/v/stable.svg)](https://packagist.org/packages/endelwar/gestpayws)
 [![Build Status](https://travis-ci.org/endelwar/GestPayWS.svg?branch=master)](https://travis-ci.org/endelwar/GestPayWS)
@@ -8,18 +8,18 @@
 
 PHP implementation of GestPay (Banca Sella) Web Services
 
-##Highlights
+## Highlights
 
 - Simple API
 - PHPUnit tested
 - Framework agnostic
 - Composer ready, [PSR-2][] and [PSR-4][] compliant
 
-##System Requirements
+## System Requirements
 
 You need **PHP >= 5.3.3** and the `soap` extension to use the library, but the latest stable version of PHP is recommended.
 
-##Install
+## Install
 
 Install `EndelWar/GestPayWS` using Composer.
 
@@ -27,13 +27,21 @@ Install `EndelWar/GestPayWS` using Composer.
 $ composer require endelwar/gestpayws
 ```
 
-##Testing
+## Testing
 
 `EndelWar/GestPayWS` has a [PHPUnit](https://phpunit.de) test suite. To run the tests, run the following command from the project folder.
 
 ``` bash
 $ phpunit
 ```
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
 ## Versioning
 
