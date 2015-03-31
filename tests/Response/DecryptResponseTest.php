@@ -32,7 +32,7 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
         'ErrorCode' => 0,
         'ErrorDescription' => 'Transazione correttamente effettuata',
         'Country' => 'ITALIA',
-        'CustomInfo' => 'STORE_ID=1*P1*STORE_NAME=Negozio%2BAbc'
+        'CustomInfo' => 'STORE_ID=1*P1*STORE_NAME=Negozio+Abc'
     );
 
     public function setUp()
@@ -49,10 +49,18 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
         $this->descriptResponse = new DecryptResponse($goodResponseObject);
     }
 
-    public function testtoArray()
+    public function testToArray()
     {
-        //$this->assertArraySubset($this->validData, $this->descriptResponse->toArray());
-        //$this->assertArraySubset($this->descriptResponse->toArray(), $this->validData);
+        $this->assertArraySubset($this->validData, $this->descriptResponse->toArray());
+    }
+
+    public function testGetCustomInfoToArray()
+    {
+        $expect = array(
+            'STORE_ID' => 1,
+            'STORE_NAME' => 'Negozio Abc'
+        );
+        $this->assertEquals($expect, $this->descriptResponse->getCustomInfoToArray());
     }
 
     /* *** testing ArrayAccess *** */
@@ -61,6 +69,12 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
         $decryptResponse = new DecryptResponse($this->goodResponseObject);
         $decryptResponse->offsetSet('AuthorizationCode', $this->validData['AuthorizationCode']);
         $this->assertEquals($this->descriptResponse->get('AuthorizationCode'), $this->validData['AuthorizationCode']);
+    }
+
+    public function testOffsetGet()
+    {
+        $decryptResponse = new DecryptResponse($this->goodResponseObject);
+        $this->assertEquals($this->validData['AuthorizationCode'], $decryptResponse->offsetGet('AuthorizationCode'));
     }
 
     public function testOffsetUnset()

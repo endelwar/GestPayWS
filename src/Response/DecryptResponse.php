@@ -50,10 +50,26 @@ class DecryptResponse extends Response
         'VbVBuyer',
         'VbVFlag'
     );
+    protected $separator = "*P1*";
 
     public function __construct($soapResponse)
     {
         $xml = simplexml_load_string($soapResponse->DecryptResult->any);
+        if (isset($xml->CustomInfo)) {
+            $xml->CustomInfo = urldecode($xml->CustomInfo);
+        }
         parent::__construct($xml);
+    }
+
+    public function getCustomInfoToArray()
+    {
+        $allinfo = explode($this->separator, $this->data['CustomInfo']);
+        $customInfoArray = array();
+        foreach ($allinfo as $singleInfo) {
+            $tagvalue = explode("=", $singleInfo);
+            $customInfoArray[$tagvalue[0]] = urldecode($tagvalue[1]);
+        }
+
+        return $customInfoArray;
     }
 }
