@@ -11,6 +11,7 @@ PHP implementation of GestPay (Banca Sella) Web Services
 ## Highlights
 
 - Simple API
+- Decoupled classes
 - PHPUnit tested
 - Framework agnostic
 - Composer ready, [PSR-2][] and [PSR-4][] compliant
@@ -25,6 +26,73 @@ Install `EndelWar/GestPayWS` using Composer.
 
 ```
 $ composer require endelwar/gestpayws
+```
+
+## Using
+### Crypt
+``` php
+require __DIR__ . '/../vendor/autoload.php';
+
+use EndelWar\GestPayWS\WSCryptDecryptSoapClient;
+use EndelWar\GestPayWS\WSCryptDecrypt;
+use EndelWar\GestPayWS\Parameter\EncryptParameter;
+use EndelWar\GestPayWS\Data;
+
+// enable or disable test environment
+$enableTestEnv = true;
+$soapClient = new WSCryptDecryptSoapClient($enableTestEnv);
+try {
+    $gestpay = new WSCryptDecrypt($soapClient->getSoapClient());
+} catch (\Exception $e) {
+    var_dump($e->getCode(), $e->getMessage());
+}
+
+// set mandatory info
+$encryptParameter = new EncryptParameter();
+$encryptParameter->shopLogin = 'GESPAY12345';
+$encryptParameter->amount = '1.23';
+$encryptParameter->shopTransactionId = '1';
+$encryptParameter->uicCode = Data\Currency::EUR;
+$encryptParameter->languageId = Data\Language::ITALIAN;
+
+// set optional custom info as array
+$customArray = array('STORE_ID' => '42', 'STORE_NAME' => 'Shop Abc123');
+$encryptParameter->setCustomInfo($customArray);
+
+// encrypt data
+$encryptResult = $gestpay->encrypt($encryptParameter);
+
+// get redirect link to Banca Sella
+echo $encryptResult->getPaymentPageUrl($encryptParameter->shopLogin, $soapClient->wsdlEnvironment);
+```
+
+### Decrypt
+``` php
+require __DIR__ . '/../vendor/autoload.php';
+
+use EndelWar\GestPayWS\Parameter\DecryptParameter;
+use EndelWar\GestPayWS\WSCryptDecryptSoapClient;
+use EndelWar\GestPayWS\WSCryptDecrypt;
+
+// $_GET['a'] and $_GET['b'] are received from Banca Sella
+$param = array(
+    'shopLogin' => $_GET['a'],
+    'CryptedString' => $_GET['b']
+);
+
+$decryptParam = new DecryptParameter($param);
+
+// enable or disable test environment
+$enableTestEnv = true;
+$soapClient = new WSCryptDecryptSoapClient($enableTestEnv);
+try {
+    $gestpay = new WSCryptDecrypt($soapClient->getSoapClient());
+    $decryptResult = $gestpay->decrypt($decryptParam);
+    
+    echo $decryptResult->TransactionResult;
+} catch (\Exception $e) {
+    var_dump($e->getCode(), $e->getMessage());
+}
 ```
 
 ## Testing
