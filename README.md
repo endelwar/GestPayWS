@@ -1,6 +1,6 @@
 # GestPayWS
 
-[![Latest Stable Version](https://poser.pugx.org/endelwar/gestpayws/v/stable.svg)](https://packagist.org/packages/endelwar/gestpayws)
+[![Latest Stable Version](https://img.shields.io/packagist/v/endelwar/gestpayws.svg)](https://packagist.org/packages/endelwar/gestpayws)
 [![Build Status](https://travis-ci.org/endelwar/GestPayWS.svg?branch=master)](https://travis-ci.org/endelwar/GestPayWS)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/endelwar/GestPayWS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/endelwar/GestPayWS/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/endelwar/GestPayWS/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/endelwar/GestPayWS/?branch=master)
