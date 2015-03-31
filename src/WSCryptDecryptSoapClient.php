@@ -89,6 +89,10 @@ class WSCryptDecryptSoapClient
         return array();
     }
 
+    /**
+     * @param bool $testEnv
+     * @return resource
+     */
     private function getStreamContext($testEnv = false)
     {
         if ($testEnv) {
