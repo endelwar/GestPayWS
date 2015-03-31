@@ -10,8 +10,6 @@
 
 namespace EndelWar\GestPayWS\Response;
 
-use EndelWar\GestPayWS\Parameter\DecryptParameter;
-
 /**
  * Class DecryptResponse
  * @package EndelWar\GestPayWS
