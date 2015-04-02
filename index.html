@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>GestPayWS by endelwar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,169 +8,251 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">GestPayWS</h1>
-      <h2 class="project-tagline">PHP implementation of GestPay (Banca Sella) Web Service</h2>
-      <a href="https://github.com/endelwar/GestPayWS" class="btn">View on GitHub</a>
-      <a href="https://github.com/endelwar/GestPayWS/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/endelwar/GestPayWS/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+</head>
+<body>
+<section class="page-header">
+    <h1 class="project-name">GestPayWS</h1>
 
-    <section class="main-content">
-      <h1>
-<a id="gestpayws" class="anchor" href="#gestpayws" aria-hidden="true"><span class="octicon octicon-link"></span></a>GestPayWS</h1>
+    <h2 class="project-tagline">PHP implementation of GestPay (Banca Sella) Web Service</h2>
+    <a href="https://github.com/endelwar/GestPayWS" class="btn">View on GitHub</a>
+    <a href="https://github.com/endelwar/GestPayWS/zipball/master" class="btn">Download .zip</a>
+    <a href="https://github.com/endelwar/GestPayWS/tarball/master" class="btn">Download .tar.gz</a>
+</section>
 
-<p><a href="https://packagist.org/packages/endelwar/gestpayws"><img src="https://img.shields.io/packagist/v/endelwar/gestpayws.svg" alt="Latest Stable Version"></a>
-<a href="https://travis-ci.org/endelwar/GestPayWS"><img src="https://travis-ci.org/endelwar/GestPayWS.svg?branch=master" alt="Build Status"></a>
-<a href="https://scrutinizer-ci.com/g/endelwar/GestPayWS/?branch=master"><img src="https://scrutinizer-ci.com/g/endelwar/GestPayWS/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a>
-<a href="https://scrutinizer-ci.com/g/endelwar/GestPayWS/?branch=master"><img src="https://scrutinizer-ci.com/g/endelwar/GestPayWS/badges/coverage.png?b=master" alt="Code Coverage"></a>
-<a href="https://packagist.org/packages/endelwar/gestpayws"><img src="https://img.shields.io/packagist/l/endelwar/gestpayws.svg" alt="License"></a></p>
+<section class="main-content">
+    <h1>
+        <a id="gestpayws" class="anchor" href="#gestpayws" aria-hidden="true"><span class="octicon octicon-link"></span></a>GestPayWS
+    </h1>
 
-<p>PHP implementation of GestPay (Banca Sella) Web Services</p>
+    <p><a href="https://packagist.org/packages/endelwar/gestpayws"><img
+            src="https://img.shields.io/packagist/v/endelwar/gestpayws.svg" alt="Latest Stable Version"></a>
+        <a href="https://travis-ci.org/endelwar/GestPayWS"><img
+                src="https://travis-ci.org/endelwar/GestPayWS.svg?branch=master" alt="Build Status"></a>
+        <a href="https://scrutinizer-ci.com/g/endelwar/GestPayWS/?branch=master"><img
+                src="https://scrutinizer-ci.com/g/endelwar/GestPayWS/badges/quality-score.png?b=master"
+                alt="Scrutinizer Code Quality"></a>
+        <a href="https://scrutinizer-ci.com/g/endelwar/GestPayWS/?branch=master"><img
+                src="https://scrutinizer-ci.com/g/endelwar/GestPayWS/badges/coverage.png?b=master" alt="Code Coverage"></a>
+        <a href="https://packagist.org/packages/endelwar/gestpayws"><img
+                src="https://img.shields.io/packagist/l/endelwar/gestpayws.svg" alt="License"></a></p>
 
-<h2>
-<a id="highlights" class="anchor" href="#highlights" aria-hidden="true"><span class="octicon octicon-link"></span></a>Highlights</h2>
+    <p>PHP implementation of GestPay (Banca Sella) Web Services</p>
 
-<ul>
-<li>Simple API</li>
-<li>Decoupled classes</li>
-<li>PHPUnit tested</li>
-<li>Framework agnostic</li>
-<li>Composer ready, <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md">PSR-2</a> and <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md">PSR-4</a> compliant</li>
-</ul>
+    <h2>
+        <a id="highlights" class="anchor" href="#highlights" aria-hidden="true"><span
+                class="octicon octicon-link"></span></a>Highlights</h2>
 
-<h2>
-<a id="system-requirements" class="anchor" href="#system-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>System Requirements</h2>
+    <ul>
+        <li>Simple API</li>
+        <li>Decoupled classes</li>
+        <li>PHPUnit tested</li>
+        <li>Framework agnostic</li>
+        <li>Composer ready, <a
+                href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md">PSR-2</a>
+            and <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md">PSR-4</a>
+            compliant
+        </li>
+    </ul>
 
-<p>You need <strong>PHP &gt;= 5.3.3</strong> and the <code>soap</code> extension to use the library, but the latest stable version of PHP is recommended.</p>
+    <h2>
+        <a id="system-requirements" class="anchor" href="#system-requirements" aria-hidden="true"><span
+                class="octicon octicon-link"></span></a>System Requirements</h2>
 
-<h2>
-<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+    <p>You need <strong>PHP &gt;= 5.3.3</strong> and the <code>soap</code> extension to use the library, but the latest
+        stable version of PHP is recommended.</p>
 
-<p>Install <code>EndelWar/GestPayWS</code> using Composer.</p>
+    <h2>
+        <a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install
+    </h2>
+
+    <p>Install <code>EndelWar/GestPayWS</code> using Composer.</p>
 
 <pre><code>$ composer require endelwar/gestpayws
 </code></pre>
 
-<h2>
-<a id="using" class="anchor" href="#using" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using</h2>
+    <h2>
+        <a id="using" class="anchor" href="#using" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using
+    </h2>
 
-<h3>
-<a id="crypt" class="anchor" href="#crypt" aria-hidden="true"><span class="octicon octicon-link"></span></a>Crypt</h3>
+    <h3>
+        <a id="crypt" class="anchor" href="#crypt" aria-hidden="true"><span class="octicon octicon-link"></span></a>Crypt
+    </h3>
 
-<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">require</span> <span class="pl-c1">__DIR__</span> <span class="pl-k">.</span> <span class="pl-s"><span class="pl-pds">'</span>/../vendor/autoload.php<span class="pl-pds">'</span></span>;</span>
+    <div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">require</span> <span class="pl-c1">__DIR__</span> <span
+            class="pl-k">.</span> <span class="pl-s"><span class="pl-pds">'</span>/../vendor/autoload.php<span
+            class="pl-pds">'</span></span>;</span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">EndelWar\GestPayWS\WSCryptDecryptSoapClient</span>;</span>
 <span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">EndelWar\GestPayWS\WSCryptDecrypt</span>;</span>
-<span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">EndelWar\GestPayWS\Parameter\EncryptParameter</span>;</span>
+<span class="pl-s1"><span class="pl-k">use</span> <span
+        class="pl-c1">EndelWar\GestPayWS\Parameter\EncryptParameter</span>;</span>
 <span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">EndelWar\GestPayWS\Data</span>;</span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-c">// enable or disable test environment</span></span>
-<span class="pl-s1"><span class="pl-smi">$enableTestEnv</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>;</span>
-<span class="pl-s1"><span class="pl-smi">$soapClient</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">WSCryptDecryptSoapClient</span>(<span class="pl-smi">$enableTestEnv</span>);</span>
+<span class="pl-s1"><span class="pl-smi">$enableTestEnv</span> <span class="pl-k">=</span> <span
+        class="pl-c1">true</span>;</span>
+<span class="pl-s1"><span class="pl-smi">$soapClient</span> <span class="pl-k">=</span> <span
+        class="pl-k">new</span> <span class="pl-c1">WSCryptDecryptSoapClient</span>(<span
+        class="pl-smi">$enableTestEnv</span>);</span>
 <span class="pl-s1"><span class="pl-k">try</span> {</span>
-<span class="pl-s1">    <span class="pl-smi">$gestpay</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">WSCryptDecrypt</span>(<span class="pl-smi">$soapClient</span><span class="pl-k">-&gt;</span>getSoapClient());</span>
-<span class="pl-s1">} <span class="pl-k">catch</span> (<span class="pl-c1">\</span><span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>) {</span>
-<span class="pl-s1">    <span class="pl-c1">var_dump</span>(<span class="pl-smi">$e</span><span class="pl-k">-&gt;</span>getCode(), <span class="pl-smi">$e</span><span class="pl-k">-&gt;</span>getMessage());</span>
+<span class="pl-s1">    <span class="pl-smi">$gestpay</span> <span class="pl-k">=</span> <span
+        class="pl-k">new</span> <span class="pl-c1">WSCryptDecrypt</span>(<span class="pl-smi">$soapClient</span><span
+        class="pl-k">-&gt;</span>getSoapClient());</span>
+<span class="pl-s1">} <span class="pl-k">catch</span> (<span class="pl-c1">\</span><span class="pl-c1">Exception</span> <span
+        class="pl-smi">$e</span>) {</span>
+<span class="pl-s1">    <span class="pl-c1">var_dump</span>(<span class="pl-smi">$e</span><span
+        class="pl-k">-&gt;</span>getCode(), <span class="pl-smi">$e</span><span class="pl-k">-&gt;</span>getMessage());</span>
 <span class="pl-s1">}</span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-c">// set mandatory info</span></span>
-<span class="pl-s1"><span class="pl-smi">$encryptParameter</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">EncryptParameter</span>();</span>
-<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span><span class="pl-smi">shopLogin</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>GESPAY12345<span class="pl-pds">'</span></span>;</span>
-<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span><span class="pl-smi">amount</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>1.23<span class="pl-pds">'</span></span>;</span>
-<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span><span class="pl-smi">shopTransactionId</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span>;</span>
-<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span><span class="pl-smi">uicCode</span> <span class="pl-k">=</span> <span class="pl-c1">Data\</span><span class="pl-c1">Currency</span><span class="pl-k">::</span><span class="pl-c1">EUR</span>;</span>
-<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span><span class="pl-smi">languageId</span> <span class="pl-k">=</span> <span class="pl-c1">Data\</span><span class="pl-c1">Language</span><span class="pl-k">::</span><span class="pl-c1">ITALIAN</span>;</span>
+<span class="pl-s1"><span class="pl-smi">$encryptParameter</span> <span class="pl-k">=</span> <span
+        class="pl-k">new</span> <span class="pl-c1">EncryptParameter</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span><span class="pl-smi">shopLogin</span> <span
+        class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>GESPAY12345<span
+        class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span><span class="pl-smi">amount</span> <span
+        class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>1.23<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span><span class="pl-smi">shopTransactionId</span> <span
+        class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>1<span
+        class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span><span class="pl-smi">uicCode</span> <span
+        class="pl-k">=</span> <span class="pl-c1">Data\</span><span class="pl-c1">Currency</span><span
+        class="pl-k">::</span><span class="pl-c1">EUR</span>;</span>
+<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span><span class="pl-smi">languageId</span> <span
+        class="pl-k">=</span> <span class="pl-c1">Data\</span><span class="pl-c1">Language</span><span
+        class="pl-k">::</span><span class="pl-c1">ITALIAN</span>;</span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-c">// set optional custom info as array</span></span>
-<span class="pl-s1"><span class="pl-smi">$customArray</span> <span class="pl-k">=</span> <span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">'</span>STORE_ID<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>42<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>STORE_NAME<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>Shop Abc123<span class="pl-pds">'</span></span>);</span>
-<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span>setCustomInfo(<span class="pl-smi">$customArray</span>);</span>
+<span class="pl-s1"><span class="pl-smi">$customArray</span> <span class="pl-k">=</span> <span
+        class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">'</span>STORE_ID<span class="pl-pds">'</span></span> <span
+        class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>42<span class="pl-pds">'</span></span>, <span
+        class="pl-s"><span class="pl-pds">'</span>STORE_NAME<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span
+        class="pl-s"><span class="pl-pds">'</span>Shop Abc123<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span>setCustomInfo(<span
+        class="pl-smi">$customArray</span>);</span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-c">// encrypt data</span></span>
-<span class="pl-s1"><span class="pl-smi">$encryptResult</span> <span class="pl-k">=</span> <span class="pl-smi">$gestpay</span><span class="pl-k">-&gt;</span>encrypt(<span class="pl-smi">$encryptParameter</span>);</span>
+<span class="pl-s1"><span class="pl-smi">$encryptResult</span> <span class="pl-k">=</span> <span
+        class="pl-smi">$gestpay</span><span class="pl-k">-&gt;</span>encrypt(<span
+        class="pl-smi">$encryptParameter</span>);</span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-c">// get redirect link to Banca Sella</span></span>
-<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$encryptResult</span><span class="pl-k">-&gt;</span>getPaymentPageUrl(<span class="pl-smi">$encryptParameter</span><span class="pl-k">-&gt;</span><span class="pl-smi">shopLogin</span>, <span class="pl-smi">$soapClient</span><span class="pl-k">-&gt;</span><span class="pl-smi">wsdlEnvironment</span>);</span></pre></div>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$encryptResult</span><span
+        class="pl-k">-&gt;</span>getPaymentPageUrl(<span class="pl-smi">$encryptParameter</span><span
+        class="pl-k">-&gt;</span><span class="pl-smi">shopLogin</span>, <span class="pl-smi">$soapClient</span><span
+        class="pl-k">-&gt;</span><span class="pl-smi">wsdlEnvironment</span>);</span></pre>
+    </div>
 
-<h3>
-<a id="decrypt" class="anchor" href="#decrypt" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decrypt</h3>
+    <h3>
+        <a id="decrypt" class="anchor" href="#decrypt" aria-hidden="true"><span class="octicon octicon-link"></span></a>Decrypt
+    </h3>
 
-<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">require</span> <span class="pl-c1">__DIR__</span> <span class="pl-k">.</span> <span class="pl-s"><span class="pl-pds">'</span>/../vendor/autoload.php<span class="pl-pds">'</span></span>;</span>
+    <div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">require</span> <span class="pl-c1">__DIR__</span> <span
+            class="pl-k">.</span> <span class="pl-s"><span class="pl-pds">'</span>/../vendor/autoload.php<span
+            class="pl-pds">'</span></span>;</span>
 <span class="pl-s1"></span>
-<span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">EndelWar\GestPayWS\Parameter\DecryptParameter</span>;</span>
+<span class="pl-s1"><span class="pl-k">use</span> <span
+        class="pl-c1">EndelWar\GestPayWS\Parameter\DecryptParameter</span>;</span>
 <span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">EndelWar\GestPayWS\WSCryptDecryptSoapClient</span>;</span>
 <span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">EndelWar\GestPayWS\WSCryptDecrypt</span>;</span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-c">// $_GET['a'] and $_GET['b'] are received from Banca Sella</span></span>
-<span class="pl-s1"><span class="pl-smi">$param</span> <span class="pl-k">=</span> <span class="pl-c1">array</span>(</span>
-<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>shopLogin<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-smi">$_GET</span>[<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>],</span>
-<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>CryptedString<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-smi">$_GET</span>[<span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>]</span>
+<span class="pl-s1"><span class="pl-smi">$param</span> <span class="pl-k">=</span> <span
+        class="pl-c1">array</span>(</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>shopLogin<span
+        class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-smi">$_GET</span>[<span
+        class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>],</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>CryptedString<span
+        class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-smi">$_GET</span>[<span
+        class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>]</span>
 <span class="pl-s1">);</span>
 <span class="pl-s1"></span>
-<span class="pl-s1"><span class="pl-smi">$decryptParam</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">DecryptParameter</span>(<span class="pl-smi">$param</span>);</span>
+<span class="pl-s1"><span class="pl-smi">$decryptParam</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span
+        class="pl-c1">DecryptParameter</span>(<span class="pl-smi">$param</span>);</span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-c">// enable or disable test environment</span></span>
-<span class="pl-s1"><span class="pl-smi">$enableTestEnv</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>;</span>
-<span class="pl-s1"><span class="pl-smi">$soapClient</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">WSCryptDecryptSoapClient</span>(<span class="pl-smi">$enableTestEnv</span>);</span>
+<span class="pl-s1"><span class="pl-smi">$enableTestEnv</span> <span class="pl-k">=</span> <span
+        class="pl-c1">true</span>;</span>
+<span class="pl-s1"><span class="pl-smi">$soapClient</span> <span class="pl-k">=</span> <span
+        class="pl-k">new</span> <span class="pl-c1">WSCryptDecryptSoapClient</span>(<span
+        class="pl-smi">$enableTestEnv</span>);</span>
 <span class="pl-s1"><span class="pl-k">try</span> {</span>
-<span class="pl-s1">    <span class="pl-smi">$gestpay</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">WSCryptDecrypt</span>(<span class="pl-smi">$soapClient</span><span class="pl-k">-&gt;</span>getSoapClient());</span>
-<span class="pl-s1">    <span class="pl-smi">$decryptResult</span> <span class="pl-k">=</span> <span class="pl-smi">$gestpay</span><span class="pl-k">-&gt;</span>decrypt(<span class="pl-smi">$decryptParam</span>);</span>
+<span class="pl-s1">    <span class="pl-smi">$gestpay</span> <span class="pl-k">=</span> <span
+        class="pl-k">new</span> <span class="pl-c1">WSCryptDecrypt</span>(<span class="pl-smi">$soapClient</span><span
+        class="pl-k">-&gt;</span>getSoapClient());</span>
+<span class="pl-s1">    <span class="pl-smi">$decryptResult</span> <span class="pl-k">=</span> <span class="pl-smi">$gestpay</span><span
+        class="pl-k">-&gt;</span>decrypt(<span class="pl-smi">$decryptParam</span>);</span>
 <span class="pl-s1"></span>
-<span class="pl-s1">    <span class="pl-c1">echo</span> <span class="pl-smi">$decryptResult</span><span class="pl-k">-&gt;</span><span class="pl-smi">TransactionResult</span>;</span>
-<span class="pl-s1">} <span class="pl-k">catch</span> (<span class="pl-c1">\</span><span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>) {</span>
-<span class="pl-s1">    <span class="pl-c1">var_dump</span>(<span class="pl-smi">$e</span><span class="pl-k">-&gt;</span>getCode(), <span class="pl-smi">$e</span><span class="pl-k">-&gt;</span>getMessage());</span>
-<span class="pl-s1">}</span></pre></div>
+<span class="pl-s1">    <span class="pl-c1">echo</span> <span class="pl-smi">$decryptResult</span><span class="pl-k">-&gt;</span><span
+        class="pl-smi">TransactionResult</span>;</span>
+<span class="pl-s1">} <span class="pl-k">catch</span> (<span class="pl-c1">\</span><span class="pl-c1">Exception</span> <span
+        class="pl-smi">$e</span>) {</span>
+<span class="pl-s1">    <span class="pl-c1">var_dump</span>(<span class="pl-smi">$e</span><span
+        class="pl-k">-&gt;</span>getCode(), <span class="pl-smi">$e</span><span class="pl-k">-&gt;</span>getMessage());</span>
+<span class="pl-s1">}</span></pre>
+    </div>
 
-<h2>
-<a id="testing" class="anchor" href="#testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing</h2>
+    <h2>
+        <a id="testing" class="anchor" href="#testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing
+    </h2>
 
-<p><code>EndelWar/GestPayWS</code> has a <a href="https://phpunit.de">PHPUnit</a> test suite. To run the tests, run the following command from the project folder.</p>
+    <p><code>EndelWar/GestPayWS</code> has a <a href="https://phpunit.de">PHPUnit</a> test suite. To run the tests, run
+        the following command from the project folder.</p>
 
-<div class="highlight highlight-bash"><pre>$ phpunit</pre></div>
+    <div class="highlight highlight-bash">
+        <pre>$ phpunit</pre>
+    </div>
 
-<h2>
-<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+    <h2>
+        <a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span
+                class="octicon octicon-link"></span></a>Contributing</h2>
 
-<ol>
-<li>Fork it</li>
-<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
-<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
-<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
-<li>Create new Pull Request</li>
-</ol>
+    <ol>
+        <li>Fork it</li>
+        <li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+        <li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+        <li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+        <li>Create new Pull Request</li>
+    </ol>
 
-<h2>
-<a id="versioning" class="anchor" href="#versioning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Versioning</h2>
+    <h2>
+        <a id="versioning" class="anchor" href="#versioning" aria-hidden="true"><span
+                class="octicon octicon-link"></span></a>Versioning</h2>
 
-<p>Semantic versioning (<a href="http://semver.org/">semver</a>) is applied.</p>
+    <p>Semantic versioning (<a href="http://semver.org/">semver</a>) is applied.</p>
 
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+    <h2>
+        <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License
+    </h2>
 
-<p>This bundle is under the MIT license. For the full copyright and license information, please view the LICENSE file that
-was distributed with this source code.</p>
+    <p>This library is under the MIT license. For the full copyright and license information, please view the LICENSE
+        file that
+        was distributed with this source code.</p>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/endelwar/GestPayWS">GestPayWS</a> is maintained by <a href="https://github.com/endelwar">endelwar</a>.</span>
+    <footer class="site-footer">
+        <span class="site-footer-owner"><a
+                href="https://github.com/endelwar/GestPayWS">GestPayWS</a> is maintained by <a
+                href="https://github.com/endelwar">endelwar</a>.</span>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a
+                href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a
+                href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+    </footer>
 
-    </section>
+</section>
 
-            <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-51156205-4");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-51156205-4");
+        pageTracker._trackPageview();
+    } catch (err) {
+    }
+</script>
 
-  </body>
+</body>
 </html>
 
