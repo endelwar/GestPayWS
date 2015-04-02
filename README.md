@@ -117,7 +117,7 @@ Semantic versioning ([semver](http://semver.org/)) is applied.
 
 ## License
 
-This bundle is under the MIT license. For the full copyright and license information, please view the LICENSE file that
+This library is under the MIT license. For the full copyright and license information, please view the LICENSE file that
 was distributed with this source code.
 
 [PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
