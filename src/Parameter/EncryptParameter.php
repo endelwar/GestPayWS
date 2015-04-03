@@ -99,6 +99,9 @@ class EncryptParameter extends Parameter
     );
     private $invalidCharsFlattened = '';
 
+    /**
+     * @param array $parameters
+     */
     public function __construct(array $parameters = array())
     {
         $this->invalidChars[] = chr(167); //§ ascii char

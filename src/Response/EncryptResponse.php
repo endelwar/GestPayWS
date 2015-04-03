@@ -34,12 +34,21 @@ class EncryptResponse extends Response
         'ErrorDescription'
     );
 
+    /**
+     * @param \stdClass $soapResponse
+     * @throws \Exception
+     */
     public function __construct($soapResponse)
     {
         $xml = simplexml_load_string($soapResponse->EncryptResult->any);
         parent::__construct($xml);
     }
 
+    /**
+     * @param string $shopLogin
+     * @param string $wsdlEnvironment
+     * @return string
+     */
     public function getPaymentPageUrl($shopLogin, $wsdlEnvironment)
     {
         return $this->paymentPageUrl[$wsdlEnvironment] . '?a=' . $shopLogin . '&b=' . $this->CryptDecryptString;

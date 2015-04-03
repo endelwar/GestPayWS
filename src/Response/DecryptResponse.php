@@ -50,6 +50,10 @@ class DecryptResponse extends Response
     );
     protected $separator = "*P1*";
 
+    /**
+     * @param \stdClass $soapResponse
+     * @throws \Exception
+     */
     public function __construct($soapResponse)
     {
         $xml = simplexml_load_string($soapResponse->DecryptResult->any);
@@ -59,6 +63,9 @@ class DecryptResponse extends Response
         parent::__construct($xml);
     }
 
+    /**
+     * @return array
+     */
     public function getCustomInfoToArray()
     {
         $allinfo = explode($this->separator, $this->data['CustomInfo']);

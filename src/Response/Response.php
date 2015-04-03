@@ -23,7 +23,7 @@ abstract class Response implements \ArrayAccess
     protected $parametersName = array();
 
     /**
-     * @param $xml
+     * @param \SimpleXMLElement $xml
      * @throws Exception
      */
     public function __construct($xml)
@@ -43,8 +43,8 @@ abstract class Response implements \ArrayAccess
     }
 
     /**
-     * @param $key
-     * @param $value
+     * @param string $key
+     * @param mixed $value
      * @throws InvalidArgumentException
      */
     public function set($key, $value)
@@ -150,7 +150,7 @@ abstract class Response implements \ArrayAccess
     }
 
     /**
-     * Magic setter, calls getXXX if exists.
+     * Magic setter, calls setXXX if exists.
      * @param $key
      * @param $value
      *
