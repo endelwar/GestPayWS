@@ -64,6 +64,25 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expect, $this->descriptResponse->getCustomInfoToArray());
     }
 
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testSetException()
+    {
+        $this->descriptResponse->set('iDontExists', 'abc123');
+    }
+
+    public function testIsset()
+    {
+        $this->assertTrue(isset($this->descriptResponse->TransactionType));
+    }
+
+    public function testMagicSetter()
+    {
+        $this->descriptResponse->AuthorizationCode = 'ABC123';
+        $this->assertEquals('ABC123', $this->descriptResponse->get('AuthorizationCode'));
+    }
+
     /* *** testing ArrayAccess *** */
     public function testOffsetSet()
     {
