@@ -25,6 +25,7 @@
   },
   "require": {
     "php": ">=5.3.3",
+    "ext-openssl": "*",
     "ext-soap": "*"
   },
   "require-dev": {
