@@ -2,7 +2,11 @@
   "name": "endelwar/gestpayws",
   "type": "library",
   "description": "PHP implementation of GestPay (Banca Sella) Web Services",
-  "keywords": ["gestpay","bancasella"],
+  "keywords": [
+    "gestpay",
+    "bancasella",
+    "webservice"
+  ],
   "license": "MIT",
   "authors": [
     {

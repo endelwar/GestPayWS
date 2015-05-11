@@ -28,15 +28,12 @@ abstract class Response implements \ArrayAccess
      */
     public function __construct($xml)
     {
-        /*if ((int)$xml->ErrorCode != 0) {
-            throw new Exception((string)$xml->ErrorDescription, (int)$xml->ErrorCode);
-        }*/
-
         $array = json_decode(json_encode($xml), true);
         $array = array_map(function ($value) {
             if (is_array($value) && empty($value)) {
                 return '';
             }
+
             return $value;
         }, $array);
         $this->fromArray($array);
