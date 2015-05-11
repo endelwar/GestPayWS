@@ -68,7 +68,7 @@ return Symfony\CS\Config\Config::create()
         'ordered_use',
         'phpdoc_order',
         'short_echo_tag',
-        //'strict',
-        //'strict_param',
+        'strict',
+        'strict_param',
     ))
     ->finder($finder);

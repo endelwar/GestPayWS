@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the GestPayWS library.
  *
@@ -14,7 +15,7 @@ class WSCryptDecryptSoapClient
 {
     protected $wsdlUrl = array(
         'test' => 'https://testecomm.sella.it/gestpay/GestPayWS/WsCryptDecrypt.asmx?wsdl',
-        'production' => 'https://ecomms2s.sella.it/gestpay/GestPayWS/WsCryptDecrypt.asmx?wsdl'
+        'production' => 'https://ecomms2s.sella.it/gestpay/GestPayWS/WsCryptDecrypt.asmx?wsdl',
     );
     public $wsdlEnvironment;
 
@@ -37,7 +38,7 @@ class WSCryptDecryptSoapClient
     );
     protected $certificatePeerName = array(
         'test' => 'testecomm.sella.it',
-        'production' => 'ecomms2s.sella.it'
+        'production' => 'ecomms2s.sella.it',
     );
     protected $soapClient;
 
@@ -68,7 +69,7 @@ class WSCryptDecryptSoapClient
         $this->wsdlEnvironment = 'test';
         $soapClientTestOption = array(
             'trace' => true,
-            'cache_wsdl' =>  WSDL_CACHE_NONE
+            'cache_wsdl' => WSDL_CACHE_NONE,
         );
 
         return $soapClientTestOption;

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the GestPayWS library.
  *
@@ -43,7 +44,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
             array(Currency::BRL, 234),
             array(Currency::PLN, 237),
             array(Currency::EUR, 242),
-            array(Currency::RUB, 244)
+            array(Currency::RUB, 244),
         );
     }
 

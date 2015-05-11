@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the GestPayWS library.
  *
@@ -12,8 +13,8 @@ namespace EndelWar\GestPayWS;
 
 use EndelWar\GestPayWS\Parameter\DecryptParameter;
 use EndelWar\GestPayWS\Parameter\EncryptParameter;
-use EndelWar\GestPayWS\Response\EncryptResponse;
 use EndelWar\GestPayWS\Response\DecryptResponse;
+use EndelWar\GestPayWS\Response\EncryptResponse;
 
 /**
  * Class WSCryptDecrypt

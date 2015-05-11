@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the GestPayWS library.
  *
@@ -33,7 +34,7 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
         'ErrorCode' => 0,
         'ErrorDescription' => 'Transazione correttamente effettuata',
         'Country' => 'ITALIA',
-        'CustomInfo' => 'STORE_ID=1*P1*STORE_NAME=Negozio+Abc'
+        'CustomInfo' => 'STORE_ID=1*P1*STORE_NAME=Negozio+Abc',
     );
 
     public function setUp()
@@ -59,7 +60,7 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
     {
         $expect = array(
             'STORE_ID' => 1,
-            'STORE_NAME' => 'Negozio Abc'
+            'STORE_NAME' => 'Negozio Abc',
         );
         $this->assertEquals($expect, $this->decryptGoodResponse->getCustomInfoToArray());
     }
@@ -148,7 +149,8 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
     /**
      * @return DecryptResponse
      */
-    private function getBadResponse9999(){
+    private function getBadResponse9999()
+    {
         $badResponse9999Object = clone $this->emptyResponseObject;
         $badResponse9999Object->DecryptResult->any = $this->badResponseString9999;
         $this->goodResponseObject = $badResponse9999Object;

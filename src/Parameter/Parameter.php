@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the GestPayWS library.
  *
@@ -41,7 +42,7 @@ abstract class Parameter implements \ArrayAccess
      */
     public function set($key, $value)
     {
-        if (!in_array($key, $this->parametersName)) {
+        if (!in_array($key, $this->parametersName, true)) {
             throw new InvalidArgumentException(sprintf('%s is not a valid parameter name.', $key));
         }
         $this->parameters[$key] = $value;
@@ -58,7 +59,7 @@ abstract class Parameter implements \ArrayAccess
             return $this->parameters[$key];
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -98,7 +99,7 @@ abstract class Parameter implements \ArrayAccess
      *
      * @param string $key
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($key)
     {
@@ -180,7 +181,7 @@ abstract class Parameter implements \ArrayAccess
      */
     private function classify($string)
     {
-        return str_replace(' ', '', ucwords(strtr($string, "_-", " ")));
+        return str_replace(' ', '', ucwords(strtr($string, '_-', ' ')));
     }
 
     /**
@@ -188,7 +189,7 @@ abstract class Parameter implements \ArrayAccess
      *
      * @param string $key
      *
-     * @return boolean
+     * @return bool
      */
     public function __isset($key)
     {

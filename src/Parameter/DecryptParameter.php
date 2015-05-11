@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the GestPayWS library.
  *
@@ -18,11 +19,11 @@ class DecryptParameter extends Parameter
 {
     protected $parametersName = array(
         'shopLogin',
-        'CryptedString'
+        'CryptedString',
     );
 
     protected $mandatoryParameters = array(
         'shopLogin',
-        'CryptedString'
+        'CryptedString',
     );
 }

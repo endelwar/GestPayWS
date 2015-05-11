@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the GestPayWS library.
  *
@@ -21,7 +22,7 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
         'shopLogin' => 'GESPAY60861',
         'uicCode' => Currency::EUR,
         'amount' => 1.23,
-        'shopTransactionId' => 123
+        'shopTransactionId' => 123,
     );
 
     protected function setUp()
@@ -82,7 +83,7 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
     public function testSetCustomInfoArrayOneValue()
     {
         $data = array(
-            'datum1' => 'value1'
+            'datum1' => 'value1',
         );
         $this->encryptParam->setCustomInfo($data);
         $this->assertEquals($this->encryptParam->get('customInfo'), 'datum1=value1');
@@ -101,7 +102,7 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
     public function testSetCustomInfoArrayOverLenght()
     {
         $data = array(
-            'datum1' => '012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789OVERLENGHT'
+            'datum1' => '012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789OVERLENGHT',
         );
         $this->encryptParam->setCustomInfo($data);
         $this->assertEquals($this->encryptParam->get('customInfo'),
@@ -137,7 +138,7 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
     {
         $data = array(
             'uicCode' => Currency::EUR,
-            'shopTransactionId' => $this->validData['shopTransactionId']
+            'shopTransactionId' => $this->validData['shopTransactionId'],
         );
         $encryptParamArray = new EncryptParameter($data);
         $this->assertFalse($encryptParamArray->areAllMandatoryParametersSet());
@@ -157,7 +158,7 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
             array($this->validData['shopLogin']),
             array(Currency::EUR),
             array($this->validData['amount']),
-            array($this->validData['shopTransactionId'])
+            array($this->validData['shopTransactionId']),
         );
     }
 
@@ -178,7 +179,7 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
             array('str*P1*str'),
             array('/*this is a comment*/'),
             array('str' . chr(167) . 'str'),
-            array('str1&str2&str3')
+            array('str1&str2&str3'),
         );
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the GestPayWS library.
  *
@@ -10,10 +11,10 @@
 
 namespace EndelWar\GestPayWS\Test;
 
-use EndelWar\GestPayWS\WSCryptDecrypt;
 use EndelWar\GestPayWS\Data\Currency;
-use EndelWar\GestPayWS\Parameter\EncryptParameter;
 use EndelWar\GestPayWS\Parameter\DecryptParameter;
+use EndelWar\GestPayWS\Parameter\EncryptParameter;
+use EndelWar\GestPayWS\WSCryptDecrypt;
 
 class WSCryptDecryptTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,11 +24,11 @@ class WSCryptDecryptTest extends \PHPUnit_Framework_TestCase
         'shopLogin' => 'GESPAY60861',
         'uicCode' => Currency::EUR,
         'amount' => 1.23,
-        'shopTransactionId' => 123
+        'shopTransactionId' => 123,
     );
     private $mandatoryDecryptParameter = array(
         'shopLogin' => 'GESPAY60861',
-        'CryptedString' => "VBBeiJSy8qQc3_c7VaxCtfSCwr7Tz1o3czYGGHeX8QhfFMfpoWJtGLAnmSTtIt5MKHOP9y2ycqst6Ypiw000nW5uEo7usJh5KV5pmWQpkoNibgx5tneQPnPg9yOhk40ZfaEIC7p0905QRdiTPsX9UC0vzL4ypmsk0KI_AQaunyiiVKxcQ_zVjuHvBfB_i8coDATDiP2aspgkOiaoFwJEW6eVU3gHUXohAW0UU6Ag3HovCGC1F8803YwmwM4JSUsYoCZauxBSlVAxQHif0tEKfyxS8ev9hc1zgd2ewozCsBIUfoBkUyqAElfL4BDwjeEutZr5iMBBSgrRTDA5_oyoVkSUzBSVuQZI*94Hn8yAXtGKi1_uu6HK2kXQSE1R7W8f45r3Fj*COTJBFnWK8a93mZ0xmocrqzoUbEhQA5jh32ac9eU0gb2Wo676dfRozW31zmFuOSDPYOrTqsRGBJ5CxtL0HbIbv_l6nJlQH_yEyxjOfERxPk_5LYxPQHId7Ktj9Kr3wwPIuDRRJiby8c9Il8AoOMWCphtJn_fS75M3arWU3UjWO4tHa*yEoQlI7kzH"
+        'CryptedString' => 'VBBeiJSy8qQc3_c7VaxCtfSCwr7Tz1o3czYGGHeX8QhfFMfpoWJtGLAnmSTtIt5MKHOP9y2ycqst6Ypiw000nW5uEo7usJh5KV5pmWQpkoNibgx5tneQPnPg9yOhk40ZfaEIC7p0905QRdiTPsX9UC0vzL4ypmsk0KI_AQaunyiiVKxcQ_zVjuHvBfB_i8coDATDiP2aspgkOiaoFwJEW6eVU3gHUXohAW0UU6Ag3HovCGC1F8803YwmwM4JSUsYoCZauxBSlVAxQHif0tEKfyxS8ev9hc1zgd2ewozCsBIUfoBkUyqAElfL4BDwjeEutZr5iMBBSgrRTDA5_oyoVkSUzBSVuQZI*94Hn8yAXtGKi1_uu6HK2kXQSE1R7W8f45r3Fj*COTJBFnWK8a93mZ0xmocrqzoUbEhQA5jh32ac9eU0gb2Wo676dfRozW31zmFuOSDPYOrTqsRGBJ5CxtL0HbIbv_l6nJlQH_yEyxjOfERxPk_5LYxPQHId7Ktj9Kr3wwPIuDRRJiby8c9Il8AoOMWCphtJn_fS75M3arWU3UjWO4tHa*yEoQlI7kzH',
     );
 
     protected function setUp()
@@ -53,7 +54,6 @@ class WSCryptDecryptTest extends \PHPUnit_Framework_TestCase
         $this->soapClientMock->expects($this->any())
             ->method('Decrypt')
             ->will($this->returnValue($result));
-
     }
 
     public function testEncrypt()

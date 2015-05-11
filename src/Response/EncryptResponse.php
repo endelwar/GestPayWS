@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the GestPayWS library.
  *
@@ -24,14 +25,14 @@ class EncryptResponse extends Response
 {
     protected $paymentPageUrl = array(
         'test' => 'https://testecomm.sella.it/pagam/pagam.aspx',
-        'production' => 'https://ecomm.sella.it/pagam/pagam.aspx'
+        'production' => 'https://ecomm.sella.it/pagam/pagam.aspx',
     );
     protected $parametersName = array(
         'TransactionType',
         'TransactionResult',
         'CryptDecryptString',
         'ErrorCode',
-        'ErrorDescription'
+        'ErrorDescription',
     );
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the GestPayWS library.
  *
@@ -46,9 +47,9 @@ class DecryptResponse extends Response
         'VbV',
         'VbVRisp',
         'VbVBuyer',
-        'VbVFlag'
+        'VbVFlag',
     );
-    protected $separator = "*P1*";
+    protected $separator = '*P1*';
 
     /**
      * @param \stdClass $soapResponse
@@ -71,7 +72,7 @@ class DecryptResponse extends Response
         $allinfo = explode($this->separator, $this->data['CustomInfo']);
         $customInfoArray = array();
         foreach ($allinfo as $singleInfo) {
-            $tagvalue = explode("=", $singleInfo);
+            $tagvalue = explode('=', $singleInfo);
             $customInfoArray[$tagvalue[0]] = urldecode($tagvalue[1]);
         }
 

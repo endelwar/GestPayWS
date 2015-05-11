@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the GestPayWS library.
  *
@@ -72,7 +73,7 @@ class EncryptParameter extends Parameter
         'amount',
         'shopTransactionId',
     );
-    protected $separator = "*P1*";
+    protected $separator = '*P1*';
     private $customInfoArray = array();
     private $invalidChars = array(
         '&',
@@ -95,7 +96,7 @@ class EncryptParameter extends Parameter
         '--',
         '/*',
         '%',
-        '//'
+        '//',
     );
     private $invalidCharsFlattened = '';
 
@@ -115,7 +116,7 @@ class EncryptParameter extends Parameter
      */
     public function set($key, $value)
     {
-        if (!in_array($key, $this->parametersName)) {
+        if (!in_array($key, $this->parametersName, true)) {
             throw new InvalidArgumentException(sprintf('%s is not a valid parameter name.', $key));
         }
         $this->verifyParameterValidity($value);
@@ -155,7 +156,7 @@ class EncryptParameter extends Parameter
         $allinfo = explode($this->separator, $this->customInfo);
         $customInfoArray = array();
         foreach ($allinfo as $singleInfo) {
-            $tagvalue = explode("=", $singleInfo);
+            $tagvalue = explode('=', $singleInfo);
             $customInfoArray[$tagvalue[0]] = urldecode($tagvalue[1]);
         }
 
@@ -168,7 +169,7 @@ class EncryptParameter extends Parameter
      */
     public function verifyParameterValidity($value)
     {
-        if (strlen($this->invalidCharsFlattened) == 0) {
+        if (strlen($this->invalidCharsFlattened) === 0) {
             $invalidCharsQuoted = array_map('preg_quote', $this->invalidChars);
             $this->invalidCharsFlattened = implode('|', $invalidCharsQuoted);
         }
