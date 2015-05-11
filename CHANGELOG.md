@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 ### Added
-- Three more tests to Response/DecryptResponse
+- Remove exception if Response in not OK
+- Five more tests to Response/DecryptResponse
 - Missing PHPdoc
 
 ### Fixed

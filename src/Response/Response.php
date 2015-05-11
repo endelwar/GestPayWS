@@ -28,9 +28,9 @@ abstract class Response implements \ArrayAccess
      */
     public function __construct($xml)
     {
-        if ((int)$xml->ErrorCode != 0) {
+        /*if ((int)$xml->ErrorCode != 0) {
             throw new Exception((string)$xml->ErrorDescription, (int)$xml->ErrorCode);
-        }
+        }*/
 
         $array = json_decode(json_encode($xml), true);
         $array = array_map(function ($value) {
@@ -85,6 +85,15 @@ abstract class Response implements \ArrayAccess
         foreach ($data as $key => $value) {
             $this->set($key, $value);
         }
+    }
+
+    public function isOK()
+    {
+        if ($this->get('TransactionResult') == 'KO') {
+            return false;
+        }
+
+        return true;
     }
 
     /**

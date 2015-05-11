@@ -15,7 +15,7 @@ use EndelWar\GestPayWS\Response\DecryptResponse;
 
 class DecryptResponseTest extends \PHPUnit_Framework_TestCase
 {
-    protected $descriptResponse;
+    protected $decryptGoodResponse;
     protected $emptyResponseObject;
     protected $goodResponseString = '<GestPayCryptDecrypt xmlns=""><TransactionType>DECRYPT</TransactionType><TransactionResult>OK</TransactionResult><ShopTransactionID>1</ShopTransactionID><BankTransactionID>7</BankTransactionID><AuthorizationCode>0013R4</AuthorizationCode><Currency>242</Currency><Amount>0.10</Amount><Country>ITALIA</Country><CustomInfo>STORE_ID=1*P1*STORE_NAME=Negozio%2BAbc</CustomInfo><Buyer><BuyerName>Name Surname</BuyerName><BuyerEmail>name.surname@example.org</BuyerEmail></Buyer><TDLevel>HALF</TDLevel><ErrorCode>0</ErrorCode><ErrorDescription>Transazione correttamente effettuata</ErrorDescription><AlertCode/><AlertDescription/><VbVRisp/><VbVBuyer/><VbVFlag/><TransactionKey/></GestPayCryptDecrypt>';
     private $goodResponseObject;
@@ -47,12 +47,12 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
         $goodResponseObject->DecryptResult->any = $this->goodResponseString;
         $this->goodResponseObject = $goodResponseObject;
 
-        $this->descriptResponse = new DecryptResponse($goodResponseObject);
+        $this->decryptGoodResponse = new DecryptResponse($goodResponseObject);
     }
 
     public function testToArray()
     {
-        $this->assertArraySubset($this->validData, $this->descriptResponse->toArray());
+        $this->assertArraySubset($this->validData, $this->decryptGoodResponse->toArray());
     }
 
     public function testGetCustomInfoToArray()
@@ -61,7 +61,7 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
             'STORE_ID' => 1,
             'STORE_NAME' => 'Negozio Abc'
         );
-        $this->assertEquals($expect, $this->descriptResponse->getCustomInfoToArray());
+        $this->assertEquals($expect, $this->decryptGoodResponse->getCustomInfoToArray());
     }
 
     /**
@@ -69,18 +69,33 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetException()
     {
-        $this->descriptResponse->set('iDontExists', 'abc123');
+        $this->decryptGoodResponse->set('iDontExists', 'abc123');
     }
 
     public function testIsset()
     {
-        $this->assertTrue(isset($this->descriptResponse->TransactionType));
+        $this->assertTrue(isset($this->decryptGoodResponse->TransactionType));
     }
 
     public function testMagicSetter()
     {
-        $this->descriptResponse->AuthorizationCode = 'ABC123';
-        $this->assertEquals('ABC123', $this->descriptResponse->get('AuthorizationCode'));
+        $this->decryptGoodResponse->AuthorizationCode = 'ABC123';
+        $this->assertEquals('ABC123', $this->decryptGoodResponse->get('AuthorizationCode'));
+    }
+
+    public function testIsOK()
+    {
+        $this->assertTrue($this->decryptGoodResponse->isOK());
+    }
+
+    public function testIsNotOK1142()
+    {
+        $this->assertFalse($this->getBadResponse1142()->isOK());
+    }
+
+    public function testIsNotOK9999()
+    {
+        $this->assertFalse($this->getBadResponse9999()->isOK());
     }
 
     /* *** testing ArrayAccess *** */
@@ -88,7 +103,7 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
     {
         $decryptResponse = new DecryptResponse($this->goodResponseObject);
         $decryptResponse->offsetSet('AuthorizationCode', $this->validData['AuthorizationCode']);
-        $this->assertEquals($this->descriptResponse->get('AuthorizationCode'), $this->validData['AuthorizationCode']);
+        $this->assertEquals($this->decryptGoodResponse->get('AuthorizationCode'), $this->validData['AuthorizationCode']);
     }
 
     public function testOffsetGet()
@@ -116,5 +131,28 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
         $decryptResponse = new DecryptResponse($this->goodResponseObject);
         $this->assertTrue($decryptResponse->offsetExists('AuthorizationCode'));
         $this->assertFalse($decryptResponse->offsetExists('iDontExist'));
+    }
+
+    /**
+     * @return DecryptResponse
+     */
+    private function getBadResponse1142()
+    {
+        $badResponse1142Object = clone $this->emptyResponseObject;
+        $badResponse1142Object->DecryptResult->any = $this->badResponseString1142;
+        $this->goodResponseObject = $badResponse1142Object;
+
+        return new DecryptResponse($badResponse1142Object);
+    }
+
+    /**
+     * @return DecryptResponse
+     */
+    private function getBadResponse9999(){
+        $badResponse9999Object = clone $this->emptyResponseObject;
+        $badResponse9999Object->DecryptResult->any = $this->badResponseString9999;
+        $this->goodResponseObject = $badResponse9999Object;
+
+        return new DecryptResponse($badResponse9999Object);
     }
 }

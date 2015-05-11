@@ -50,14 +50,18 @@ class EncryptResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($resultUrl, $expect);
     }
 
-    /**
-     * @expectedException Exception
-     */
-    public function testException()
+    public function testIsOK()
+    {
+        $this->assertTrue($this->goodEncryptResonse->isOK());
+    }
+
+    public function testIsNotOK()
     {
         $badSoapResponse = new \stdClass();
         $badSoapResponse->EncryptResult = new \stdClass();
         $badSoapResponse->EncryptResult->any = '<GestPayCryptDecrypt xmlns=""><TransactionType>ENCRYPT</TransactionType><TransactionResult>KO</TransactionResult><ErrorCode>1142</ErrorCode><ErrorDescription>Chiamata non accettata: indirizzo IP non valido</ErrorDescription></GestPayCryptDecrypt>';
         $badEncryptResonse = new EncryptResponse($badSoapResponse);
+
+        $this->assertFalse($badEncryptResonse->isOK());
     }
 }
