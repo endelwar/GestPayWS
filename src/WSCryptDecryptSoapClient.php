@@ -19,15 +19,10 @@ class WSCryptDecryptSoapClient
     public $wsdlEnvironment;
 
     /**
-     * As of 30 march 2015 test site supports the following ssl ciphers:
-     * TLS_RSA_WITH_RC4_128_MD5 (0x4)
-     * TLS_RSA_WITH_RC4_128_SHA (0x5)
-     * TLS_RSA_WITH_3DES_EDE_CBC_SHA (0xa)
-     * TLS_RSA_WITH_DES_CBC_SHA (0x9)
-     * TLS_RSA_EXPORT1024_WITH_RC4_56_SHA (0x64)
-     * TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA (0x62)
-     * TLS_RSA_EXPORT_WITH_RC4_40_MD5 (0x3)
-     * TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5 (0x6)
+     * As of 11 may 2015 production site supports the following ssl ciphers:
+     * TLS_RSA_WITH_RC4_128_MD5 (0x4)   WEAK 	128
+     * TLS_RSA_WITH_RC4_128_SHA (0x5)   WEAK 	128
+     * TLS_RSA_WITH_3DES_EDE_CBC_SHA (0xa)      112
      *
      * The only one which is secure is TLS_RSA_WITH_3DES_EDE_CBC_SHA (called DES-CBC3-SHA in openssl)
      */
@@ -52,7 +47,7 @@ class WSCryptDecryptSoapClient
     public function __construct($testEnv = false)
     {
         $soapClientDefaultOption = array(
-            'user_agent' => 'EndelWar-GestPayWS/1.0 (+https://github.com/endelwar/GestPayWS)',
+            'user_agent' => 'EndelWar-GestPayWS/1.1 (+https://github.com/endelwar/GestPayWS)',
             'stream_context' => $this->getStreamContext($testEnv),
             'connection_timeout' => 3000,
         );
