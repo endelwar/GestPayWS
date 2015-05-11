@@ -32,6 +32,7 @@ after_script:
     - wget https://scrutinizer-ci.com/ocular.phar
     - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
     - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v; fi;'
+    - CODECLIMATE_REPO_TOKEN=7f31866ce1a6e1672b23a53ed767283332b189f64dff7fe39bce8ddca2eb91fa ./vendor/bin/test-reporter
 
 git:
   depth: 5
