@@ -87,7 +87,7 @@ abstract class Response implements \ArrayAccess
 
     public function isOK()
     {
-        return ($this->get('TransactionResult') == 'OK');
+        return ($this->get('TransactionResult') === 'OK');
     }
 
     /**
