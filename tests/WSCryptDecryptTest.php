@@ -18,7 +18,6 @@ use EndelWar\GestPayWS\WSCryptDecrypt;
 
 class WSCryptDecryptTest extends \PHPUnit_Framework_TestCase
 {
-
     private $soapClientMock;
     private $mandatoryEncryptParameter = array(
         'shopLogin' => 'GESPAY60861',
