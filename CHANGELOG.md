@@ -4,6 +4,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [1.1.2] - 2015-10-13
+### Fixed
+- Use triple equal sign in Response->isOK()
+- Removed old code from .styleci.yml file
+
+## [1.1.1] - 2015-05-11
+### Fixed
+- Fixed PSR2 compatibility and code cleanup
+
 ## [1.1.0] - 2015-05-11
 ### Added
 - Remove exception if Response is not OK
@@ -30,7 +39,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - WSCryptDecryptSoapClient class
 - PHPUnit Test Suite
 
-[unreleased]: https://github.com/endelwar/GestPayWS/compare/v1.1.0...HEAD
+[unreleased]: https://github.com/endelwar/GestPayWS/compare/v1.1.2...HEAD
+[1.1.2]: https://github.com/endelwar/GestPayWS/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/endelwar/GestPayWS/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/endelwar/GestPayWS/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/endelwar/GestPayWS/compare/v0.1.0...v1.0.0
 [0.1.0]: https://github.com/endelwar/GestPayWS/compare/67d07c5c9c4d1873ba9620af25b91e0a53664d80...v0.1.0
