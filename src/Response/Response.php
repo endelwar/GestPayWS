@@ -92,10 +92,16 @@ abstract class Response implements \ArrayAccess
     {
         $data = $this->toArray();
         $xml = new \SimpleXMLElement('<GestPayCryptDecrypt/>');
-        array_walk_recursive($data, function($value, $key)use($xml){
+        array_walk_recursive($data, function ($value, $key) use ($xml) {
             $xml->addChild($key, $value);
         });
-        return $xml->asXML();
+
+        $dom = new \DOMDocument('1.0');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($xml->asXML());
+
+        return $dom->saveXML(null, LIBXML_NOEMPTYTAG);
     }
 
     public function isOK()

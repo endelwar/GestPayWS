@@ -44,9 +44,18 @@ class EncryptResponseTest extends \PHPUnit_Framework_TestCase
 
     public function testToXML()
     {
-        $validXML = '<?xml version="1.0"?>
-<GestPayCryptDecrypt><TransactionType>ENCRYPT</TransactionType><TransactionResult>OK</TransactionResult><CryptDecryptString>7_uiFEF9drv60fbY7k6GUQzlPAEjKOJVz5l6oVUHpbZVmQkI7scV27zAGAsnQ*JPggwKUN6nseXie9tnL7YX85L1jm6IA9SRTd7Pe_cggddL1uJZHtWyElR_6Q5qjvPSfypShmKrcWncHNX1SO4PcrQY49jO7FDhF4y3aezyupy82aQs*Ov01*L*n3MFrcBS</CryptDecryptString><ErrorCode>0</ErrorCode><ErrorDescription/></GestPayCryptDecrypt>
-';
+        $validXML = <<<XML
+<?xml version="1.0"?>
+<GestPayCryptDecrypt>
+  <TransactionType>ENCRYPT</TransactionType>
+  <TransactionResult>OK</TransactionResult>
+  <CryptDecryptString>7_uiFEF9drv60fbY7k6GUQzlPAEjKOJVz5l6oVUHpbZVmQkI7scV27zAGAsnQ*JPggwKUN6nseXie9tnL7YX85L1jm6IA9SRTd7Pe_cggddL1uJZHtWyElR_6Q5qjvPSfypShmKrcWncHNX1SO4PcrQY49jO7FDhF4y3aezyupy82aQs*Ov01*L*n3MFrcBS</CryptDecryptString>
+  <ErrorCode>0</ErrorCode>
+  <ErrorDescription></ErrorDescription>
+</GestPayCryptDecrypt>
+
+XML;
+
         $this->assertEquals($validXML, $this->goodEncryptResonse->toXML());
     }
 

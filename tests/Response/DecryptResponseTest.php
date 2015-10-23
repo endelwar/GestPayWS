@@ -67,9 +67,33 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
 
     public function testToXML()
     {
-        $validXML = '<?xml version="1.0"?>
-<GestPayCryptDecrypt><TransactionType>DECRYPT</TransactionType><TransactionResult>OK</TransactionResult><ShopTransactionID>1</ShopTransactionID><BankTransactionID>7</BankTransactionID><AuthorizationCode>0013R4</AuthorizationCode><Currency>242</Currency><Amount>0.10</Amount><Country>ITALIA</Country><CustomInfo>STORE_ID=1*P1*STORE_NAME=Negozio+Abc</CustomInfo><BuyerName>Name Surname</BuyerName><BuyerEmail>name.surname@example.org</BuyerEmail><TDLevel>HALF</TDLevel><ErrorCode>0</ErrorCode><ErrorDescription>Transazione correttamente effettuata</ErrorDescription><AlertCode/><AlertDescription/><VbVRisp/><VbVBuyer/><VbVFlag/><TransactionKey/></GestPayCryptDecrypt>
-';
+        $validXML = <<<XML
+<?xml version="1.0"?>
+<GestPayCryptDecrypt>
+  <TransactionType>DECRYPT</TransactionType>
+  <TransactionResult>OK</TransactionResult>
+  <ShopTransactionID>1</ShopTransactionID>
+  <BankTransactionID>7</BankTransactionID>
+  <AuthorizationCode>0013R4</AuthorizationCode>
+  <Currency>242</Currency>
+  <Amount>0.10</Amount>
+  <Country>ITALIA</Country>
+  <CustomInfo>STORE_ID=1*P1*STORE_NAME=Negozio+Abc</CustomInfo>
+  <BuyerName>Name Surname</BuyerName>
+  <BuyerEmail>name.surname@example.org</BuyerEmail>
+  <TDLevel>HALF</TDLevel>
+  <ErrorCode>0</ErrorCode>
+  <ErrorDescription>Transazione correttamente effettuata</ErrorDescription>
+  <AlertCode></AlertCode>
+  <AlertDescription></AlertDescription>
+  <VbVRisp></VbVRisp>
+  <VbVBuyer></VbVBuyer>
+  <VbVFlag></VbVFlag>
+  <TransactionKey></TransactionKey>
+</GestPayCryptDecrypt>
+
+XML;
+
         $this->assertEquals($validXML, $this->decryptGoodResponse->toXML());
     }
 
@@ -112,7 +136,8 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
     {
         $decryptResponse = new DecryptResponse($this->goodResponseObject);
         $decryptResponse->offsetSet('AuthorizationCode', $this->validData['AuthorizationCode']);
-        $this->assertEquals($this->decryptGoodResponse->get('AuthorizationCode'), $this->validData['AuthorizationCode']);
+        $this->assertEquals($this->decryptGoodResponse->get('AuthorizationCode'),
+            $this->validData['AuthorizationCode']);
     }
 
     public function testOffsetGet()
