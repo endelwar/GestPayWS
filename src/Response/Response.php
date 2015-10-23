@@ -64,7 +64,7 @@ abstract class Response implements \ArrayAccess
             return $this->data[$key];
         }
 
-        return;
+        return null;
     }
 
     /**
