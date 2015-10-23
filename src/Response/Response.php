@@ -68,6 +68,16 @@ abstract class Response implements \ArrayAccess
     }
 
     /**
+     * @param array $data
+     */
+    public function fromArray($data)
+    {
+        foreach ($data as $key => $value) {
+            $this->set($key, $value);
+        }
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -76,13 +86,16 @@ abstract class Response implements \ArrayAccess
     }
 
     /**
-     * @param array $data
+     * @return mixed
      */
-    public function fromArray($data)
+    public function toXML()
     {
-        foreach ($data as $key => $value) {
-            $this->set($key, $value);
-        }
+        $data = $this->toArray();
+        $xml = new \SimpleXMLElement('<GestPayCryptDecrypt/>');
+        array_walk_recursive($data, function($value, $key)use($xml){
+            $xml->addChild($key, $value);
+        });
+        return $xml->asXML();
     }
 
     public function isOK()

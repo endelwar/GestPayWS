@@ -65,6 +65,14 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expect, $this->decryptGoodResponse->getCustomInfoToArray());
     }
 
+    public function testToXML()
+    {
+        $validXML = '<?xml version="1.0"?>
+<GestPayCryptDecrypt><TransactionType>DECRYPT</TransactionType><TransactionResult>OK</TransactionResult><ShopTransactionID>1</ShopTransactionID><BankTransactionID>7</BankTransactionID><AuthorizationCode>0013R4</AuthorizationCode><Currency>242</Currency><Amount>0.10</Amount><Country>ITALIA</Country><CustomInfo>STORE_ID=1*P1*STORE_NAME=Negozio+Abc</CustomInfo><BuyerName>Name Surname</BuyerName><BuyerEmail>name.surname@example.org</BuyerEmail><TDLevel>HALF</TDLevel><ErrorCode>0</ErrorCode><ErrorDescription>Transazione correttamente effettuata</ErrorDescription><AlertCode/><AlertDescription/><VbVRisp/><VbVBuyer/><VbVFlag/><TransactionKey/></GestPayCryptDecrypt>
+';
+        $this->assertEquals($validXML, $this->decryptGoodResponse->toXML());
+    }
+
     /**
      * @expectedException InvalidArgumentException
      */

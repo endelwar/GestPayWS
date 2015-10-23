@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [1.2.0] - 2015-10-23
+### Added
+- toXML method on Response
+
 ## [1.1.2] - 2015-10-13
 ### Fixed
 - Use triple equal sign in Response->isOK()
@@ -39,7 +43,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - WSCryptDecryptSoapClient class
 - PHPUnit Test Suite
 
-[unreleased]: https://github.com/endelwar/GestPayWS/compare/v1.1.2...HEAD
+[unreleased]: https://github.com/endelwar/GestPayWS/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/endelwar/GestPayWS/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/endelwar/GestPayWS/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/endelwar/GestPayWS/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/endelwar/GestPayWS/compare/v1.0.0...v1.1.0
