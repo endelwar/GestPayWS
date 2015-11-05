@@ -18,24 +18,7 @@ class WSCryptDecryptSoapClient
         'production' => 'https://ecomms2s.sella.it/gestpay/GestPayWS/WsCryptDecrypt.asmx?wsdl',
     );
     public $wsdlEnvironment;
-
-    /**
-     * As of 11 may 2015 production site supports the following ssl ciphers:
-     * TLS_RSA_WITH_RC4_128_MD5 (0x4)   WEAK 	128
-     * TLS_RSA_WITH_RC4_128_SHA (0x5)   WEAK 	128
-     * TLS_RSA_WITH_3DES_EDE_CBC_SHA (0xa)      112
-     *
-     * The only one which is secure is TLS_RSA_WITH_3DES_EDE_CBC_SHA (called DES-CBC3-SHA in openssl)
-     */
-    protected $streamContextOption = array(
-        'ssl' => array(
-            'ciphers' => 'DES-CBC3-SHA:RC4-SHA:RC4-MD5',
-            'SNI_enabled' => true,
-            // TODO: something needs to be worked out on php < 5.6 on ssl cert verify
-            //'verify_peer' => true,
-            //'verify_depth' => 5,
-        ),
-    );
+    protected $streamContextOption = array();
     protected $certificatePeerName = array(
         'test' => 'testecomm.sella.it',
         'production' => 'ecomms2s.sella.it',
@@ -43,13 +26,15 @@ class WSCryptDecryptSoapClient
     protected $soapClient;
 
     /**
-     * @param bool $testEnv enable the test environment
+     * WSCryptDecryptSoapClient constructor.
+     * @param bool|false $testEnv enable the test environment
+     * @param null $caFile path to Certification Authority bundle file
      */
-    public function __construct($testEnv = false)
+    public function __construct($testEnv = false, $caFile = null)
     {
         $soapClientDefaultOption = array(
             'user_agent' => 'EndelWar-GestPayWS/1.1 (+https://github.com/endelwar/GestPayWS)',
-            'stream_context' => $this->getStreamContext($testEnv),
+            'stream_context' => $this->getStreamContext($testEnv, $caFile),
             'connection_timeout' => 3000,
         );
         if ($testEnv) {
@@ -87,9 +72,10 @@ class WSCryptDecryptSoapClient
 
     /**
      * @param bool $testEnv
+     * @param string $caFile
      * @return resource
      */
-    private function getStreamContext($testEnv = false)
+    private function getStreamContext($testEnv = false, $caFile = null)
     {
         if ($testEnv) {
             $host = $this->certificatePeerName['test'];
@@ -97,19 +83,25 @@ class WSCryptDecryptSoapClient
             $host = $this->certificatePeerName['production'];
         }
 
-        /**
-         * Disable TLS compression to prevent CRIME attacks where supported (PHP 5.4.13 or later).
-         */
+        $this->streamContextOption['ssl']['crypto_method'] = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+        $this->streamContextOption['ssl']['verify_peer'] = true;
+        $this->streamContextOption['ssl']['SNI_enabled'] = true;
+
+        // Disable TLS compression to prevent CRIME attacks where supported (PHP 5.4.13 or later).
         if (PHP_VERSION_ID >= 50413) {
             $this->streamContextOption['ssl']['disable_compression'] = true;
         }
 
-        /**
-         * CN_match was deprecated in favour of peer_name in PHP 5.6
-         */
         if (PHP_VERSION_ID < 50600) {
+            //CN_match was deprecated in favour of peer_name in PHP 5.6
             $this->streamContextOption['ssl']['CN_match'] = $host;
             $this->streamContextOption['ssl']['SNI_server_name'] = $host;
+            // PHP 5.6 or greater will find the system cert by default. When < 5.6, use the system ca-certificates.
+            if (is_null($caFile)) {
+                $this->streamContextOption['ssl']['cafile'] = $this->getDefaultCABundle();
+            } else {
+                $this->streamContextOption['ssl']['cafile'] = $caFile;
+            }
         } else {
             $this->streamContextOption['ssl']['peer_name'] = $host;
             $this->streamContextOption['ssl']['verify_peer_name'] = true;
@@ -124,5 +116,63 @@ class WSCryptDecryptSoapClient
     public function getSoapClient()
     {
         return $this->soapClient;
+    }
+
+    /**
+     * Returns the default cacert bundle for the current system.
+     *
+     * First, the openssl.cafile and curl.cainfo php.ini settings are checked.
+     * If those settings are not configured, then the common locations for
+     * bundles found on Red Hat, CentOS, Fedora, Ubuntu, Debian, FreeBSD, OS X
+     * and Windows are checked. If any of these file locations are found on
+     * disk, they will be utilized.
+     *
+     * Note: the result of this function is cached for subsequent calls.
+     *
+     * @return string
+     * @throws \RuntimeException if no bundle can be found.
+     *
+     * @link https://github.com/guzzle/guzzle/blob/6.1.0/src/functions.php#L143
+     */
+    public function getDefaultCABundle()
+    {
+        $cafiles = array(
+            // Red Hat, CentOS, Fedora (provided by the ca-certificates package)
+            '/etc/pki/tls/certs/ca-bundle.crt',
+            // Ubuntu, Debian (provided by the ca-certificates package)
+            '/etc/ssl/certs/ca-certificates.crt',
+            // FreeBSD (provided by the ca_root_nss package)
+            '/usr/local/share/certs/ca-root-nss.crt',
+            // OS X provided by homebrew (using the default path)
+            '/usr/local/etc/openssl/cert.pem',
+            // Google app engine
+            '/etc/ca-certificates.crt',
+            // Windows?
+            'C:\\windows\\system32\\curl-ca-bundle.crt',
+            'C:\\windows\\curl-ca-bundle.crt',
+        );
+
+        if ($ca = ini_get('openssl.cafile')) {
+            return $ca;
+        }
+        if ($ca = ini_get('curl.cainfo')) {
+            return $ca;
+        }
+        foreach ($cafiles as $filename) {
+            if (file_exists($filename)) {
+                return $filename;
+            }
+        }
+        throw new \RuntimeException(<<< EOT
+No system CA bundle could be found in any of the the common system locations.
+PHP versions earlier than 5.6 are not properly configured to use the system's
+CA bundle by default. Mozilla provides a commonly used CA bundle which can be
+downloaded here (provided by the maintainer of cURL):
+https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt. Once
+you have a CA bundle available on disk, you can set the 'openssl.cafile' PHP
+ini setting to point to the path to the file. See http://curl.haxx.se/docs/sslcerts.html
+for more information.
+EOT
+        );
     }
 }
