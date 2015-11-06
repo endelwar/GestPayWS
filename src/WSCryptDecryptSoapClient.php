@@ -129,8 +129,8 @@ class WSCryptDecryptSoapClient
      *
      * Note: the result of this function is cached for subsequent calls.
      *
-     * @return string
      * @throws \RuntimeException if no bundle can be found.
+     * @return string
      *
      * @link https://github.com/guzzle/guzzle/blob/6.1.0/src/functions.php#L143
      */
