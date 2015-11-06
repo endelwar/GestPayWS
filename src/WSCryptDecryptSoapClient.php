@@ -33,7 +33,7 @@ class WSCryptDecryptSoapClient
     public function __construct($testEnv = false, $caFile = null)
     {
         $soapClientDefaultOption = array(
-            'user_agent' => 'EndelWar-GestPayWS/1.1 (+https://github.com/endelwar/GestPayWS)',
+            'user_agent' => 'EndelWar-GestPayWS/1.3 (+https://github.com/endelwar/GestPayWS)',
             'stream_context' => $this->getStreamContext($testEnv, $caFile),
             'connection_timeout' => 3000,
         );
