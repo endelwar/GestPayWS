@@ -20,6 +20,9 @@ matrix:
   allow_failures:
     - php: hhvm-nightly
 
+before_install:
+  - pip install --user codecov
+
 before_script:
     - composer self-update
     - composer install
@@ -33,6 +36,9 @@ after_script:
     - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
     - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v; fi;'
     - CODECLIMATE_REPO_TOKEN=7f31866ce1a6e1672b23a53ed767283332b189f64dff7fe39bce8ddca2eb91fa ./vendor/bin/test-reporter
+
+after_success:
+  - codecov
 
 git:
   depth: 5
