@@ -48,6 +48,10 @@ class DecryptResponse extends Response
         'VbVRisp',
         'VbVBuyer',
         'VbVFlag',
+        'AVSResultCode',
+        'AVSResultDescription',
+        'RiskResponseCode',
+        'RiskResponseDescription'
     );
     protected $separator = '*P1*';
 
@@ -79,3 +83,4 @@ class DecryptResponse extends Response
         return $customInfoArray;
     }
 }
+

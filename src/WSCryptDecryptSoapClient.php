@@ -14,13 +14,13 @@ namespace EndelWar\GestPayWS;
 class WSCryptDecryptSoapClient
 {
     protected $wsdlUrl = array(
-        'test' => 'https://testecomm.sella.it/gestpay/GestPayWS/WsCryptDecrypt.asmx?wsdl',
+        'test' => 'https://sandbox.gestpay.net/gestpay/GestPayWS/WsCryptDecrypt.asmx?wsdl',
         'production' => 'https://ecomms2s.sella.it/gestpay/GestPayWS/WsCryptDecrypt.asmx?wsdl',
     );
     public $wsdlEnvironment;
     protected $streamContextOption = array();
     protected $certificatePeerName = array(
-        'test' => 'testecomm.sella.it',
+        'test' => 'sandbox.gestpay.net',
         'production' => 'ecomms2s.sella.it',
     );
     protected $soapClient;
@@ -83,7 +83,13 @@ class WSCryptDecryptSoapClient
             $host = $this->certificatePeerName['production'];
         }
 
-        $this->streamContextOption['ssl']['crypto_method'] = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+        if (PHP_VERSION_ID > 50607) {
+          $this->streamContextOption['ssl']['crypto_method'] = STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
+        } else {
+          $this->streamContextOption['ssl']['crypto_method'] = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+        }
+
+        $this->streamContextOption['ssl']['allow_self_signed'] = true;
         $this->streamContextOption['ssl']['verify_peer'] = true;
         $this->streamContextOption['ssl']['SNI_enabled'] = true;
 
@@ -176,3 +182,4 @@ EOT
         );
     }
 }
+
