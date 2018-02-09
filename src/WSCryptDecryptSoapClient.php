@@ -23,7 +23,9 @@ class WSCryptDecryptSoapClient
         'test' => 'sandbox.gestpay.net',
         'production' => 'ecomms2s.sella.it',
     );
+    /** @var \soapClient $soapClient */
     protected $soapClient;
+    public $version = '1.3.1';
 
     /**
      * WSCryptDecryptSoapClient constructor.
@@ -33,7 +35,7 @@ class WSCryptDecryptSoapClient
     public function __construct($testEnv = false, $caFile = null)
     {
         $soapClientDefaultOption = array(
-            'user_agent' => 'EndelWar-GestPayWS/1.3 (+https://github.com/endelwar/GestPayWS)',
+            'user_agent' => 'EndelWar-GestPayWS/' . $this->version . ' (+https://github.com/endelwar/GestPayWS)',
             'stream_context' => $this->getStreamContext($testEnv, $caFile),
             'connection_timeout' => 3000,
         );
@@ -84,9 +86,9 @@ class WSCryptDecryptSoapClient
         }
 
         if (PHP_VERSION_ID > 50607) {
-          $this->streamContextOption['ssl']['crypto_method'] = STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
+            $this->streamContextOption['ssl']['crypto_method'] = STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
         } else {
-          $this->streamContextOption['ssl']['crypto_method'] = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+            $this->streamContextOption['ssl']['crypto_method'] = STREAM_CRYPTO_METHOD_TLS_CLIENT;
         }
 
         $this->streamContextOption['ssl']['allow_self_signed'] = true;
@@ -103,7 +105,7 @@ class WSCryptDecryptSoapClient
             $this->streamContextOption['ssl']['CN_match'] = $host;
             $this->streamContextOption['ssl']['SNI_server_name'] = $host;
             // PHP 5.6 or greater will find the system cert by default. When < 5.6, use the system ca-certificates.
-            if (is_null($caFile)) {
+            if (null === $caFile) {
                 $this->streamContextOption['ssl']['cafile'] = $this->getDefaultCABundle();
             } else {
                 $this->streamContextOption['ssl']['cafile'] = $caFile;

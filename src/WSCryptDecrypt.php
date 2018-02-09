@@ -34,6 +34,8 @@ class WSCryptDecrypt
 
     /**
      * @param EncryptParameter $parameters
+     * @throws \Exception
+     * @throws \InvalidArgumentException
      * @return EncryptResponse
      */
     public function encrypt(EncryptParameter $parameters)
@@ -42,13 +44,14 @@ class WSCryptDecrypt
             throw new \InvalidArgumentException('Missing parameter');
         }
         $soapResponse = $this->soapClient->Encrypt($parameters);
-        $encryptResponse = new EncryptResponse($soapResponse);
 
-        return $encryptResponse;
+        return new EncryptResponse($soapResponse);
     }
 
     /**
      * @param DecryptParameter $parameters
+     * @throws \Exception
+     * @throws \InvalidArgumentException
      * @return DecryptResponse
      */
     public function decrypt(DecryptParameter $parameters)
@@ -57,8 +60,7 @@ class WSCryptDecrypt
             throw new \InvalidArgumentException('Missing parameter');
         }
         $soapResponse = $this->soapClient->Decrypt($parameters);
-        $decryptResponse = new DecryptResponse($soapResponse);
 
-        return $decryptResponse;
+        return new DecryptResponse($soapResponse);
     }
 }
