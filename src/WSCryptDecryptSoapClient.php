@@ -96,24 +96,10 @@ class WSCryptDecryptSoapClient
         $this->streamContextOption['ssl']['SNI_enabled'] = true;
 
         // Disable TLS compression to prevent CRIME attacks where supported (PHP 5.4.13 or later).
-        if (PHP_VERSION_ID >= 50413) {
-            $this->streamContextOption['ssl']['disable_compression'] = true;
-        }
+        $this->streamContextOption['ssl']['disable_compression'] = true;
 
-        if (PHP_VERSION_ID < 50600) {
-            //CN_match was deprecated in favour of peer_name in PHP 5.6
-            $this->streamContextOption['ssl']['CN_match'] = $host;
-            $this->streamContextOption['ssl']['SNI_server_name'] = $host;
-            // PHP 5.6 or greater will find the system cert by default. When < 5.6, use the system ca-certificates.
-            if (null === $caFile) {
-                $this->streamContextOption['ssl']['cafile'] = $this->getDefaultCABundle();
-            } else {
-                $this->streamContextOption['ssl']['cafile'] = $caFile;
-            }
-        } else {
-            $this->streamContextOption['ssl']['peer_name'] = $host;
-            $this->streamContextOption['ssl']['verify_peer_name'] = true;
-        }
+        $this->streamContextOption['ssl']['peer_name'] = $host;
+        $this->streamContextOption['ssl']['verify_peer_name'] = true;
 
         return stream_context_create($this->streamContextOption);
     }
@@ -144,6 +130,14 @@ class WSCryptDecryptSoapClient
      */
     public function getDefaultCABundle()
     {
+        if ($ca = ini_get('openssl.cafile')) {
+            return $ca;
+        }
+
+        if ($ca = ini_get('curl.cainfo')) {
+            return $ca;
+        }
+
         $cafiles = array(
             // Red Hat, CentOS, Fedora (provided by the ca-certificates package)
             '/etc/pki/tls/certs/ca-bundle.crt',
@@ -160,17 +154,12 @@ class WSCryptDecryptSoapClient
             'C:\\windows\\curl-ca-bundle.crt',
         );
 
-        if ($ca = ini_get('openssl.cafile')) {
-            return $ca;
-        }
-        if ($ca = ini_get('curl.cainfo')) {
-            return $ca;
-        }
         foreach ($cafiles as $filename) {
             if (file_exists($filename)) {
                 return $filename;
             }
         }
+
         throw new \RuntimeException(<<< EOT
 No system CA bundle could be found in any of the the common system locations.
 PHP versions earlier than 5.6 are not properly configured to use the system's
