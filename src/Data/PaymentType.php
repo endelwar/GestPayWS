@@ -13,7 +13,6 @@ namespace EndelWar\GestPayWS\Data;
 
 /**
  * Class PaymentType
- * @package EndelWar\GestPayWS\Data
  */
 class PaymentType extends Data
 {

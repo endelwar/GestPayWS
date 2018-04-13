@@ -40,10 +40,10 @@ class DecryptParameterTest extends \PHPUnit_Framework_TestCase
     public function testGet()
     {
         $this->decryptParam->fromArray(
-            array(
+            [
                 'shopLogin' => $this->shopLogin,
                 'CryptedString' => $this->CryptedString,
-            )
+            ]
         );
         $this->assertEquals($this->CryptedString, $this->decryptParam->CryptedString);
         $this->assertEquals($this->shopLogin, $this->decryptParam->shopLogin);
@@ -51,10 +51,10 @@ class DecryptParameterTest extends \PHPUnit_Framework_TestCase
 
     public function testToArray()
     {
-        $expect = array(
+        $expect = [
             'shopLogin' => $this->shopLogin,
             'CryptedString' => $this->CryptedString,
-        );
+        ];
         $this->decryptParam->set('shopLogin', $this->shopLogin);
         $this->decryptParam->set('CryptedString', $this->CryptedString);
         $this->assertEquals($expect, $this->decryptParam->toArray());
@@ -62,17 +62,17 @@ class DecryptParameterTest extends \PHPUnit_Framework_TestCase
 
     public function testFromArray()
     {
-        $expect = array(
+        $expect = [
             'shopLogin' => $this->shopLogin,
             'CryptedString' => $this->CryptedString,
-        );
+        ];
         $decryptParamFromArray = new DecryptParameter();
         $decryptParamFromArray->fromArray($expect);
         $this->assertEquals($expect, $decryptParamFromArray->toArray());
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testInvalidParameterName()
     {

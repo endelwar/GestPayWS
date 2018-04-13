@@ -13,7 +13,6 @@ namespace EndelWar\GestPayWS\Data;
 
 /**
  * Class Language
- * @package EndelWar\GestPayWS\Data
  */
 class Language extends Data
 {

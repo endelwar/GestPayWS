@@ -17,6 +17,8 @@ class LanguageTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider languageProvider
+     * @param mixed $languageCode
+     * @param mixed $expected
      */
     public function testLanguageCode($languageCode, $expected)
     {
@@ -25,13 +27,13 @@ class LanguageTest extends \PHPUnit_Framework_TestCase
 
     public function languageProvider()
     {
-        return array(
-            array(Language::ITALIAN, 1),
-            array(Language::ENGLISH, 2),
-            array(Language::SPANISH, 3),
-            array(Language::FRENCH, 4),
-            array(Language::GERMAN, 5),
-        );
+        return [
+            [Language::ITALIAN, 1],
+            [Language::ENGLISH, 2],
+            [Language::SPANISH, 3],
+            [Language::FRENCH, 4],
+            [Language::GERMAN, 5],
+        ];
     }
 
     public function testGetCode()

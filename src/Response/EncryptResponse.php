@@ -13,7 +13,6 @@ namespace EndelWar\GestPayWS\Response;
 
 /**
  * Class EncryptResponse
- * @package EndelWar\GestPayWS\Response
  *
  * @property string $TransactionType;
  * @property string $TransactionResult;
@@ -23,17 +22,17 @@ namespace EndelWar\GestPayWS\Response;
  */
 class EncryptResponse extends Response
 {
-    protected $paymentPageUrl = array(
+    protected $paymentPageUrl = [
         'test' => 'https://testecomm.sella.it/pagam/pagam.aspx',
         'production' => 'https://ecomm.sella.it/pagam/pagam.aspx',
-    );
-    protected $parametersName = array(
+    ];
+    protected $parametersName = [
         'TransactionType',
         'TransactionResult',
         'CryptDecryptString',
         'ErrorCode',
         'ErrorDescription',
-    );
+    ];
 
     /**
      * @param \stdClass $soapResponse

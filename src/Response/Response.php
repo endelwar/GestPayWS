@@ -16,12 +16,11 @@ use InvalidArgumentException;
 
 /**
  * Class Response
- * @package EndelWar\GestPayWS\Response
  */
 abstract class Response implements \ArrayAccess
 {
-    protected $data = array();
-    protected $parametersName = array();
+    protected $data = [];
+    protected $parametersName = [];
 
     /**
      * @param \SimpleXMLElement $xml
@@ -56,7 +55,7 @@ abstract class Response implements \ArrayAccess
     /**
      * @param string $key
      *
-     * @return mixed|null The value at the specified index or null.
+     * @return mixed|null the value at the specified index or null
      */
     public function get($key)
     {
@@ -64,7 +63,7 @@ abstract class Response implements \ArrayAccess
             return $this->data[$key];
         }
 
-        return;
+        return null;
     }
 
     /**
@@ -106,7 +105,7 @@ abstract class Response implements \ArrayAccess
 
     public function isOK()
     {
-        return ($this->get('TransactionResult') === 'OK');
+        return $this->get('TransactionResult') === 'OK';
     }
 
     /**
@@ -124,9 +123,9 @@ abstract class Response implements \ArrayAccess
     /**
      * Returns the value at the specified index
      *
-     * @param string $key The index with the value.
+     * @param string $key the index with the value
      *
-     * @return mixed|null The value at the specified index or null.
+     * @return mixed|null the value at the specified index or null
      */
     public function offsetGet($key)
     {
@@ -136,7 +135,7 @@ abstract class Response implements \ArrayAccess
     /**
      * Sets the value at the specified index to $value
      *
-     * @param string $key The index being set.
+     * @param string $key the index being set
      * @param mixed $value The new value for the index
      */
     public function offsetSet($key, $value)
@@ -165,7 +164,7 @@ abstract class Response implements \ArrayAccess
     {
         $getter = 'get' . $this->classify($key);
         if (method_exists($this, $getter)) {
-            return call_user_func(array($this, $getter));
+            return call_user_func([$this, $getter]);
         }
 
         return $this->get($key);
@@ -182,7 +181,7 @@ abstract class Response implements \ArrayAccess
     {
         $setter = 'set' . $this->classify($key);
         if (method_exists($this, $setter)) {
-            return call_user_func_array(array($this, $setter), array($value));
+            return call_user_func_array([$this, $setter], [$value]);
         }
         $this->set($key, $value);
     }
@@ -190,9 +189,9 @@ abstract class Response implements \ArrayAccess
     /**
      * Converts a string into a CamelCase word.
      *
-     * @param string $string The string to classify.
+     * @param string $string the string to classify
      *
-     * @return string The classified word.
+     * @return string the classified word
      */
     private function classify($string)
     {

@@ -15,7 +15,6 @@ use InvalidArgumentException;
 
 /**
  * Class EncryptParameter
- * @package EndelWar\GestPayWS\Parameter
  *
  * @property string $shopLogin
  * @property int $uicCode;
@@ -33,7 +32,7 @@ use InvalidArgumentException;
  */
 class EncryptParameter extends Parameter
 {
-    protected $parametersName = array(
+    protected $parametersName = [
         // Mandatory parameters
         'shopLogin',
         'uicCode',
@@ -66,16 +65,16 @@ class EncryptParameter extends Parameter
         'Consel_CustomerInfo',
         'payPalBillingAgreementDescription'
         */
-    );
-    protected $mandatoryParameters = array(
+    ];
+    protected $mandatoryParameters = [
         'shopLogin',
         'uicCode',
         'amount',
         'shopTransactionId',
-    );
+    ];
     protected $separator = '*P1*';
-    private $customInfoArray = array();
-    private $invalidChars = array(
+    private $customInfoArray = [];
+    private $invalidChars = [
         '&',
         ' ',
         '§', //need also to be added programmatically, because UTF-8
@@ -97,13 +96,13 @@ class EncryptParameter extends Parameter
         '/*',
         '%',
         '//',
-    );
+    ];
     private $invalidCharsFlattened = '';
 
     /**
      * @param array $parameters
      */
-    public function __construct(array $parameters = array())
+    public function __construct(array $parameters = [])
     {
         $this->invalidChars[] = chr(167); //§ ascii char
 
@@ -154,7 +153,7 @@ class EncryptParameter extends Parameter
     public function getCustomInfoToArray()
     {
         $allinfo = explode($this->separator, $this->customInfo);
-        $customInfoArray = array();
+        $customInfoArray = [];
         foreach ($allinfo as $singleInfo) {
             $tagvalue = explode('=', $singleInfo);
             $customInfoArray[$tagvalue[0]] = urldecode($tagvalue[1]);

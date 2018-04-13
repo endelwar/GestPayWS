@@ -13,11 +13,10 @@ namespace EndelWar\GestPayWS\Response;
 
 /**
  * Class DecryptResponse
- * @package EndelWar\GestPayWS
  */
 class DecryptResponse extends Response
 {
-    protected $parametersName = array(
+    protected $parametersName = [
         // Mandatory
         'TransactionType',
         'TransactionResult',
@@ -52,7 +51,7 @@ class DecryptResponse extends Response
         'AVSResultDescription',
         'RiskResponseCode',
         'RiskResponseDescription'
-    );
+    ];
     protected $separator = '*P1*';
 
     /**
@@ -74,7 +73,7 @@ class DecryptResponse extends Response
     public function getCustomInfoToArray()
     {
         $allinfo = explode($this->separator, $this->data['CustomInfo']);
-        $customInfoArray = array();
+        $customInfoArray = [];
         foreach ($allinfo as $singleInfo) {
             $tagvalue = explode('=', $singleInfo);
             $customInfoArray[$tagvalue[0]] = urldecode($tagvalue[1]);
@@ -83,4 +82,3 @@ class DecryptResponse extends Response
         return $customInfoArray;
     }
 }
-

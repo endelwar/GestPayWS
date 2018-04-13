@@ -18,7 +18,6 @@ use EndelWar\GestPayWS\Response\EncryptResponse;
 
 /**
  * Class WSCryptDecrypt
- * @package EndelWar\GestPayWS
  */
 class WSCryptDecrypt
 {

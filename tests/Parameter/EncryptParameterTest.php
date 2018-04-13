@@ -13,17 +13,16 @@ namespace EndelWar\GestPayWS\Parameter\Test;
 
 use EndelWar\GestPayWS\Data\Currency;
 use EndelWar\GestPayWS\Parameter\EncryptParameter;
-use InvalidArgumentException;
 
 class EncryptParameterTest extends \PHPUnit_Framework_TestCase
 {
     private $encryptParam;
-    private $validData = array(
+    private $validData = [
         'shopLogin' => 'GESPAY60861',
         'uicCode' => Currency::EUR,
         'amount' => 1.23,
         'shopTransactionId' => 123,
-    );
+    ];
 
     protected function setUp()
     {
@@ -61,7 +60,7 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testSetException()
     {
@@ -82,28 +81,28 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
 
     public function testSetCustomInfoArrayOneValue()
     {
-        $data = array(
+        $data = [
             'datum1' => 'value1',
-        );
+        ];
         $this->encryptParam->setCustomInfo($data);
         $this->assertEquals($this->encryptParam->get('customInfo'), 'datum1=value1');
     }
 
     public function testSetCustomInfoArrayTwoValue()
     {
-        $data = array(
+        $data = [
             'datum1' => 'value1',
             'datum2' => 'value2',
-        );
+        ];
         $this->encryptParam->setCustomInfo($data);
         $this->assertEquals($this->encryptParam->get('customInfo'), 'datum1=value1*P1*datum2=value2');
     }
 
     public function testSetCustomInfoArrayOverLenght()
     {
-        $data = array(
+        $data = [
             'datum1' => '012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789OVERLENGHT',
-        );
+        ];
         $this->encryptParam->setCustomInfo($data);
         $this->assertEquals($this->encryptParam->get('customInfo'),
             'datum1=012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789');
@@ -136,16 +135,17 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
 
     public function testNotAllMandatoryParametersSet()
     {
-        $data = array(
+        $data = [
             'uicCode' => Currency::EUR,
             'shopTransactionId' => $this->validData['shopTransactionId'],
-        );
+        ];
         $encryptParamArray = new EncryptParameter($data);
         $this->assertFalse($encryptParamArray->areAllMandatoryParametersSet());
     }
 
     /**
      * @dataProvider goodValuesProvider
+     * @param mixed $value
      */
     public function testVerifyParameterValidity($value)
     {
@@ -154,17 +154,18 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
 
     public function goodValuesProvider()
     {
-        return array(
-            array($this->validData['shopLogin']),
-            array(Currency::EUR),
-            array($this->validData['amount']),
-            array($this->validData['shopTransactionId']),
-        );
+        return [
+            [$this->validData['shopLogin']],
+            [Currency::EUR],
+            [$this->validData['amount']],
+            [$this->validData['shopTransactionId']],
+        ];
     }
 
     /**
      * @dataProvider badValuesProvider
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
+     * @param mixed $value
      */
     public function testVerifyParameterValidityException($value)
     {
@@ -173,14 +174,14 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
 
     public function badValuesProvider()
     {
-        return array(
-            array('str§'),
-            array('§str'),
-            array('str*P1*str'),
-            array('/*this is a comment*/'),
-            array('str' . chr(167) . 'str'),
-            array('str1&str2&str3'),
-        );
+        return [
+            ['str§'],
+            ['§str'],
+            ['str*P1*str'],
+            ['/*this is a comment*/'],
+            ['str' . chr(167) . 'str'],
+            ['str1&str2&str3'],
+        ];
     }
 
     public function testGetMagicMethod()

@@ -13,17 +13,16 @@ namespace EndelWar\GestPayWS\Parameter;
 
 /**
  * Class DecryptParameter
- * @package EndelWar\GestPayWS\Parameter
  */
 class DecryptParameter extends Parameter
 {
-    protected $parametersName = array(
+    protected $parametersName = [
         'shopLogin',
         'CryptedString',
-    );
+    ];
 
-    protected $mandatoryParameters = array(
+    protected $mandatoryParameters = [
         'shopLogin',
         'CryptedString',
-    );
+    ];
 }

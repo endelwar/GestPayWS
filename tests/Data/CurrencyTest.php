@@ -17,6 +17,8 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider currencyProvider
+     * @param mixed $currencyCode
+     * @param mixed $expected
      */
     public function testCurrencyCode($currencyCode, $expected)
     {
@@ -25,27 +27,27 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
 
     public function currencyProvider()
     {
-        return array(
-            array(Currency::USD, 1),
-            array(Currency::GBP, 2),
-            array(Currency::CHF, 3),
-            array(Currency::DKK, 7),
-            array(Currency::NOK, 8),
-            array(Currency::SEK, 9),
-            array(Currency::CAD, 12),
-            array(Currency::ITL, 18),
-            array(Currency::JPY, 71),
-            array(Currency::HKD, 103),
-            array(Currency::AUD, 109),
-            array(Currency::SGD, 124),
-            array(Currency::CNY, 144),
-            array(Currency::HUF, 153),
-            array(Currency::CZK, 223),
-            array(Currency::BRL, 234),
-            array(Currency::PLN, 237),
-            array(Currency::EUR, 242),
-            array(Currency::RUB, 244),
-        );
+        return [
+            [Currency::USD, 1],
+            [Currency::GBP, 2],
+            [Currency::CHF, 3],
+            [Currency::DKK, 7],
+            [Currency::NOK, 8],
+            [Currency::SEK, 9],
+            [Currency::CAD, 12],
+            [Currency::ITL, 18],
+            [Currency::JPY, 71],
+            [Currency::HKD, 103],
+            [Currency::AUD, 109],
+            [Currency::SGD, 124],
+            [Currency::CNY, 144],
+            [Currency::HUF, 153],
+            [Currency::CZK, 223],
+            [Currency::BRL, 234],
+            [Currency::PLN, 237],
+            [Currency::EUR, 242],
+            [Currency::RUB, 244],
+        ];
     }
 
     public function testGetCode()

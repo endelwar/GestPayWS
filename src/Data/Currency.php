@@ -13,7 +13,6 @@ namespace EndelWar\GestPayWS\Data;
 
 /**
  * Class Currency
- * @package EndelWar\GestPayWS\Data
  */
 class Currency extends Data
 {

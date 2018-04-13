@@ -31,13 +31,13 @@ class EncryptResponseTest extends \PHPUnit_Framework_TestCase
     {
         $resultArray = $this->goodEncryptResonse->toArray();
 
-        $expect = array(
+        $expect = [
             'TransactionType' => 'ENCRYPT',
             'TransactionResult' => 'OK',
             'CryptDecryptString' => '7_uiFEF9drv60fbY7k6GUQzlPAEjKOJVz5l6oVUHpbZVmQkI7scV27zAGAsnQ*JPggwKUN6nseXie9tnL7YX85L1jm6IA9SRTd7Pe_cggddL1uJZHtWyElR_6Q5qjvPSfypShmKrcWncHNX1SO4PcrQY49jO7FDhF4y3aezyupy82aQs*Ov01*L*n3MFrcBS',
             'ErrorCode' => '0',
             'ErrorDescription' => '',
-        );
+        ];
 
         $this->assertEquals($resultArray, $expect);
     }

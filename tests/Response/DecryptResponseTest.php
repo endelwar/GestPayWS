@@ -23,7 +23,7 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
     protected $badResponseString1142 = '<GestPayCryptDecrypt xmlns=""><TransactionType>DECRYPT</TransactionType><TransactionResult>KO</TransactionResult><ErrorCode>1142</ErrorCode><ErrorDescription>Chiamata non accettata: indirizzo IP non valido</ErrorDescription></GestPayCryptDecrypt>';
     protected $badResponseString9999 = '<GestPayCryptDecrypt xmlns=""><TransactionType>DECRYPT</TransactionType><TransactionResult>KO</TransactionResult><ErrorCode>9999</ErrorCode><ErrorDescription>Errore di Sistema</ErrorDescription></GestPayCryptDecrypt>';
 
-    protected $validData = array(
+    protected $validData = [
         'TransactionType' => 'DECRYPT',
         'TransactionResult' => 'OK',
         'ShopTransactionID' => '1',
@@ -35,7 +35,7 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
         'ErrorDescription' => 'Transazione correttamente effettuata',
         'Country' => 'ITALIA',
         'CustomInfo' => 'STORE_ID=1*P1*STORE_NAME=Negozio+Abc',
-    );
+    ];
 
     public function setUp()
     {
@@ -58,10 +58,10 @@ class DecryptResponseTest extends \PHPUnit_Framework_TestCase
 
     public function testGetCustomInfoToArray()
     {
-        $expect = array(
+        $expect = [
             'STORE_ID' => 1,
             'STORE_NAME' => 'Negozio Abc',
-        );
+        ];
         $this->assertEquals($expect, $this->decryptGoodResponse->getCustomInfoToArray());
     }
 
@@ -98,7 +98,7 @@ XML;
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testSetException()
     {

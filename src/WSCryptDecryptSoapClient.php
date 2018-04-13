@@ -13,16 +13,16 @@ namespace EndelWar\GestPayWS;
 
 class WSCryptDecryptSoapClient
 {
-    protected $wsdlUrl = array(
+    protected $wsdlUrl = [
         'test' => 'https://sandbox.gestpay.net/gestpay/GestPayWS/WsCryptDecrypt.asmx?wsdl',
         'production' => 'https://ecomms2s.sella.it/gestpay/GestPayWS/WsCryptDecrypt.asmx?wsdl',
-    );
+    ];
     public $wsdlEnvironment;
-    protected $streamContextOption = array();
-    protected $certificatePeerName = array(
+    protected $streamContextOption = [];
+    protected $certificatePeerName = [
         'test' => 'sandbox.gestpay.net',
         'production' => 'ecomms2s.sella.it',
-    );
+    ];
     /** @var \soapClient $soapClient */
     protected $soapClient;
     public $version = '1.3.1';
@@ -34,11 +34,11 @@ class WSCryptDecryptSoapClient
      */
     public function __construct($testEnv = false, $caFile = null)
     {
-        $soapClientDefaultOption = array(
+        $soapClientDefaultOption = [
             'user_agent' => 'EndelWar-GestPayWS/' . $this->version . ' (+https://github.com/endelwar/GestPayWS)',
             'stream_context' => $this->getStreamContext($testEnv, $caFile),
             'connection_timeout' => 3000,
-        );
+        ];
         if ($testEnv) {
             $soapClientEnvironmentOption = $this->setTestEnvironment();
         } else {
@@ -54,10 +54,10 @@ class WSCryptDecryptSoapClient
     private function setTestEnvironment()
     {
         $this->wsdlEnvironment = 'test';
-        $soapClientTestOption = array(
+        $soapClientTestOption = [
             'trace' => true,
             'cache_wsdl' => WSDL_CACHE_NONE,
-        );
+        ];
 
         return $soapClientTestOption;
     }
@@ -69,7 +69,7 @@ class WSCryptDecryptSoapClient
     {
         $this->wsdlEnvironment = 'production';
 
-        return array();
+        return [];
     }
 
     /**
@@ -123,10 +123,10 @@ class WSCryptDecryptSoapClient
      *
      * Note: the result of this function is cached for subsequent calls.
      *
-     * @throws \RuntimeException if no bundle can be found.
+     * @throws \RuntimeException if no bundle can be found
      * @return string
      *
-     * @link https://github.com/guzzle/guzzle/blob/6.1.0/src/functions.php#L143
+     * @see https://github.com/guzzle/guzzle/blob/6.1.0/src/functions.php#L143
      */
     public function getDefaultCABundle()
     {
@@ -138,7 +138,7 @@ class WSCryptDecryptSoapClient
             return $ca;
         }
 
-        $cafiles = array(
+        $cafiles = [
             // Red Hat, CentOS, Fedora (provided by the ca-certificates package)
             '/etc/pki/tls/certs/ca-bundle.crt',
             // Ubuntu, Debian (provided by the ca-certificates package)
@@ -152,7 +152,7 @@ class WSCryptDecryptSoapClient
             // Windows?
             'C:\\windows\\system32\\curl-ca-bundle.crt',
             'C:\\windows\\curl-ca-bundle.crt',
-        );
+        ];
 
         foreach ($cafiles as $filename) {
             if (file_exists($filename)) {
@@ -173,4 +173,3 @@ EOT
         );
     }
 }
-

@@ -13,7 +13,6 @@ namespace EndelWar\GestPayWS\Data;
 
 /**
  * Class Data
- * @package EndelWar\GestPayWS\Data
  */
 abstract class Data
 {
