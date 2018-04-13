@@ -35,6 +35,7 @@
   "require-dev": {
     "phpunit/phpunit": "^5 || ^6 || ^7",
     "codacy/coverage": "~1.0",
-    "php-coveralls/php-coveralls": "^2.0"
+    "php-coveralls/php-coveralls": "^2.0",
+    "friendsofphp/php-cs-fixer": "^2.11"
   }
 }
