@@ -45,7 +45,7 @@ after_script:
 
 after_success:
   - codecov
-  - travis_retry php vendor/bin/coveralls -v
+  - travis_retry php vendor/bin/php-coveralls -v
 
 git:
   depth: 5
