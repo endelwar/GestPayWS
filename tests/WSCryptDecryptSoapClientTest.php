@@ -46,10 +46,4 @@ class WSCryptDecryptSoapClientTest extends \PHPUnit_Framework_TestCase
         $testClient = $this->wsCryptDecryptSoapClientTestWithCA->getSoapClient();
         $this->assertInstanceOf('soapClient', $testClient);
     }
-
-    public function testGetDefaultCABundle()
-    {
-        $caFile = $this->wsCryptDecryptSoapClientTest->getDefaultCABundle();
-        $this->assertNotNull($caFile);
-    }
 }
