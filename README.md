@@ -1,7 +1,7 @@
 # GestPayWS
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/endelwar/gestpayws.svg)](https://packagist.org/packages/endelwar/gestpayws)
-[![Build Status](https://travis-ci.org/endelwar/GestPayWS.svg?branch=master)](https://travis-ci.org/endelwar/GestPayWS)
+[![Build Status](https://travis-ci.org/pepeverde/GestPayWS.svg?branch=master)](https://travis-ci.org/pepeverde/GestPayWS)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/endelwar/GestPayWS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/endelwar/GestPayWS/?branch=master)
 [![Coverage Status](https://coveralls.io/repos/endelwar/GestPayWS/badge.svg?branch=master)](https://coveralls.io/r/endelwar/GestPayWS?branch=master)
 [![License](https://img.shields.io/packagist/l/endelwar/gestpayws.svg)](https://packagist.org/packages/endelwar/gestpayws)
@@ -18,7 +18,7 @@ PHP implementation of GestPay (Banca Sella) Web Services
 
 ## System Requirements
 
-You need **PHP >= 5.3.3** and the `soap` extension to use the library, but the latest stable version of PHP is recommended.
+You need **PHP >= 5.6** and the `soap` extension to use the library, but the latest stable version of PHP is recommended.
 
 ## Install
 
@@ -100,7 +100,7 @@ try {
 `EndelWar/GestPayWS` has a [PHPUnit](https://phpunit.de) test suite. To run the tests, run the following command from the project folder.
 
 ``` bash
-$ phpunit
+$ vendor/bin/phpunit
 ```
 
 ## Contributing

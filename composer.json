@@ -28,13 +28,13 @@
     }
   },
   "require": {
-    "php": ">=5.3.3",
+    "php": ">=5.6",
     "ext-openssl": "*",
     "ext-soap": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^4.8.16 || ^5.7.23 || ^6.4.3 || ^7.1.3",
-    "satooshi/php-coveralls": "~0.6",
-    "codacy/coverage": "1.4.*"
+    "phpunit/phpunit": "^5 || ^6 || ^7",
+    "codacy/coverage": "~1.0",
+    "php-coveralls/php-coveralls": "^2.0"
   }
 }
