@@ -26,7 +26,6 @@ class WSCryptDecryptSoapClientTest extends \PHPUnit_Framework_TestCase
     {
         $this->wsCryptDecryptSoapClientTest = new WSCryptDecryptSoapClient(true);
         $this->wsCryptDecryptSoapClientProduction = new WSCryptDecryptSoapClient(false);
-        $this->wsCryptDecryptSoapClientTestWithCA = new WSCryptDecryptSoapClient(true, __DIR__ . '/../cacert-20151028.pem');
     }
 
     public function testGetSoapClientTestEnv()
@@ -39,11 +38,5 @@ class WSCryptDecryptSoapClientTest extends \PHPUnit_Framework_TestCase
     {
         $productionClient = $this->wsCryptDecryptSoapClientProduction->getSoapClient();
         $this->assertInstanceOf('soapClient', $productionClient);
-    }
-
-    public function testGetSoapClientTestEnvWithCA()
-    {
-        $testClient = $this->wsCryptDecryptSoapClientTestWithCA->getSoapClient();
-        $this->assertInstanceOf('soapClient', $testClient);
     }
 }

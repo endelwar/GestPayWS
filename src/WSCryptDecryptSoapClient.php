@@ -30,9 +30,8 @@ class WSCryptDecryptSoapClient
     /**
      * WSCryptDecryptSoapClient constructor.
      * @param bool|false $testEnv enable the test environment
-     * @param null $caFile path to Certification Authority bundle file
      */
-    public function __construct($testEnv = false, $caFile = null)
+    public function __construct($testEnv = false)
     {
         $soapClientDefaultOption = [
             'user_agent' => 'EndelWar-GestPayWS/' . $this->version . ' (+https://github.com/endelwar/GestPayWS)',
