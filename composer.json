@@ -1,5 +1,5 @@
 {
-  "name": "endelwar/gestpayws",
+  "name": "pepeverde/gestpayws",
   "type": "library",
   "description": "PHP implementation of GestPay (Banca Sella) Web Services",
   "keywords": [
@@ -15,7 +15,7 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/endelwar/GestPayWS/issues"
+    "issues": "https://github.com/pepeverde/GestPayWS/issues"
   },
   "autoload": {
     "psr-4": {
@@ -33,9 +33,8 @@
     "ext-soap": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "4.8.*",
-    "satooshi/php-coveralls": "0.6.*",
-    "codeclimate/php-test-reporter": "dev-master",
-    "codacy/coverage": "dev-master"
+    "phpunit/phpunit": "^4.8.16 || ^5.7.23 || ^6.4.3 || ^7.1.3",
+    "satooshi/php-coveralls": "~0.6",
+    "codacy/coverage": "1.4.*"
   }
 }

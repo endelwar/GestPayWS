@@ -1,3 +1,8 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=deca2972dcbbc58c9295fca4fad6ee8fb9e11f9db1ed90246664d9cf3afb06de
+    - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
+
 language: php
 
 sudo: false
@@ -12,6 +17,8 @@ php:
   - 5.5
   - 5.6
   - 7.0
+  - 7.1
+  - 7.2
   - hhvm
   - nightly
 
@@ -27,6 +34,9 @@ before_script:
     - composer self-update
     - composer install
     - mkdir -p build/logs
+    - if [ $(phpenv version-name) = "7.1" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
+    - if [ $(phpenv version-name) = "7.1" ]; then chmod +x ./cc-test-reporter; fi
+    - if [ $(phpenv version-name) = "7.1" ]; then ./cc-test-reporter before-build; fi
 
 script:
     - vendor/bin/phpunit -c phpunit.xml.dist
@@ -35,7 +45,8 @@ after_script:
     - wget https://scrutinizer-ci.com/ocular.phar
     - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
     - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v; fi;'
-    - CODECLIMATE_REPO_TOKEN=7f31866ce1a6e1672b23a53ed767283332b189f64dff7fe39bce8ddca2eb91fa ./vendor/bin/test-reporter
+    - cp build/logs/clover.xml clover.xml
+    - if [ $(phpenv version-name) = "7.1" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
 
 after_success:
   - codecov
