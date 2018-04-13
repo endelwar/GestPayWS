@@ -28,7 +28,7 @@ abstract class Response implements \ArrayAccess
     public function __construct($xml)
     {
         $array = json_decode(json_encode($xml), true);
-        $array = array_map(function ($value) {
+        $array = array_map(function($value) {
             if (is_array($value) && empty($value)) {
                 return '';
             }
@@ -45,7 +45,7 @@ abstract class Response implements \ArrayAccess
     {
         $data = $this->toArray();
         $xml = new \SimpleXMLElement('<GestPayCryptDecrypt/>');
-        array_walk_recursive($data, function ($value, $key) use ($xml) {
+        array_walk_recursive($data, function($value, $key) use ($xml) {
             $xml->addChild($key, $value);
         });
 
