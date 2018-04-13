@@ -128,7 +128,7 @@ class EncryptParameter extends Parameter
     public function setCustomInfo($customInfo)
     {
         if (!is_array($customInfo)) {
-            $this->parameters['customInfo'] = $customInfo;
+            $this->data['customInfo'] = $customInfo;
         } else {
             //check string validity
 
@@ -143,7 +143,7 @@ class EncryptParameter extends Parameter
                 $customInfo[$key] = $value;
             }
             $this->customInfoArray = $customInfo;
-            $this->parameters['customInfo'] = http_build_query($this->customInfoArray, '', $this->separator);
+            $this->data['customInfo'] = http_build_query($this->customInfoArray, '', $this->separator);
         }
     }
 
