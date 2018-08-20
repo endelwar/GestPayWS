@@ -20,6 +20,7 @@ use InvalidArgumentException;
  * @property int $uicCode;
  * @property float $amount;
  * @property string $shopTransactionId;
+ * @property string $apikey;
  * @property string $buyerName;
  * @property string $buyerEmail;
  * @property int $languageId;
