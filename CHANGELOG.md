@@ -3,10 +3,22 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
+### Added
+- Add support for `apikey` parameter
+- Add `~` to invalid chars in string
+
+### Changed
+- Remove support for EOL PHP version: PHP 5.6.7 required
+
+## [1.3.1] - 2018-02-09
+### Fixed
+- Update sandbox urls
+- Fixed crypto_method for soap stream context since php 5.6.7 and above
+- Fixed missing parameters name for DecryptResponse
 
 ## [1.3.0] - 2015-11-06
 ### Changed
-- add certificate peer validation on php < 5.6
+- Add certificate peer validation on php < 5.6
 
 ## [1.2.1] - 2015-10-23
 ### Changed
@@ -51,7 +63,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - WSCryptDecryptSoapClient class
 - PHPUnit Test Suite
 
-[unreleased]: https://github.com/endelwar/GestPayWS/compare/v1.3.0...HEAD
+[unreleased]: https://github.com/endelwar/GestPayWS/compare/v1.3.1...HEAD
+[1.3.1]: https://github.com/endelwar/GestPayWS/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/endelwar/GestPayWS/compare/v1.2.1...v1.3.0
 [1.2.1]: https://github.com/endelwar/GestPayWS/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/endelwar/GestPayWS/compare/v1.1.2...v1.2.0

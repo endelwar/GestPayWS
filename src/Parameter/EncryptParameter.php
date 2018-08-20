@@ -39,6 +39,7 @@ class EncryptParameter extends Parameter
         'amount',
         'shopTransactionId',
         // Optional parameters
+        'apikey',
         'buyerName',
         'buyerEmail',
         'languageId',
@@ -50,6 +51,7 @@ class EncryptParameter extends Parameter
         //'cvv', //deprecated
 
         /* to be implemented
+        'OrderDetails',
         'ppSellerProtection',
         'shippingDetails',
         'paymentTypes',
@@ -74,6 +76,8 @@ class EncryptParameter extends Parameter
     ];
     protected $separator = '*P1*';
     private $customInfoArray = [];
+
+    /** @see https://api.gestpay.it/#encrypt */
     private $invalidChars = [
         '&',
         ' ',
@@ -96,6 +100,7 @@ class EncryptParameter extends Parameter
         '/*',
         '%',
         '//',
+        '~',
     ];
     private $invalidCharsFlattened = '';
 
@@ -168,7 +173,7 @@ class EncryptParameter extends Parameter
      */
     public function verifyParameterValidity($value)
     {
-        if (strlen($this->invalidCharsFlattened) === 0) {
+        if ('' === $this->invalidCharsFlattened) {
             $invalidCharsQuoted = array_map('preg_quote', $this->invalidChars);
             $this->invalidCharsFlattened = implode('|', $invalidCharsQuoted);
         }
