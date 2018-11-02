@@ -19,6 +19,7 @@ class DecryptParameter extends Parameter
     protected $parametersName = [
         'shopLogin',
         'CryptedString',
+        'apikey'
     ];
 
     protected $mandatoryParameters = [
