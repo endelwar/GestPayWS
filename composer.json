@@ -37,6 +37,6 @@
     "phpunit/phpunit": "^5.7.27 || ^6 || ^7",
     "codacy/coverage": "~1.4",
     "php-coveralls/php-coveralls": "^2.1",
-    "friendsofphp/php-cs-fixer": "^2.12"
+    "friendsofphp/php-cs-fixer": "^2.13"
   }
 }

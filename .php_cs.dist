@@ -8,7 +8,7 @@ $finder = PhpCsFixer\Finder::create()
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setFinder($finder)
-    ->setRules(array(
+    ->setRules([
         '@PSR2' => true,
         '@PHP56Migration' => true,
         'array_syntax' => ['syntax' => 'short'],
@@ -57,7 +57,7 @@ return PhpCsFixer\Config::create()
         'encoding' => true,
         'ereg_to_preg' => true,
         'full_opening_tag' => true,
-        'function_declaration' => ['closure_function_spacing' => 'none'],
+        'function_declaration' => ['closure_function_spacing' => 'one'],
         'function_typehint_space' => true,
         'hash_to_slash_comment' => true,
         'line_ending' => true,
@@ -94,7 +94,7 @@ return PhpCsFixer\Config::create()
         'not_operator_with_successor_space' => false, // idem
         'short_scalar_cast' => true,
         'combine_consecutive_unsets' => true,
-
+        'visibility_required' => true,
 /*
 
        // 'cast_spaces' => false,
@@ -167,4 +167,4 @@ return PhpCsFixer\Config::create()
         'visibility_required' => true,
 
 */
-    ));
+    ]);
