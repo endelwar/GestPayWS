@@ -4,3 +4,4 @@ public/
 build/
 .php_cs.cache
 cc-test-reporter
+composer.lock
