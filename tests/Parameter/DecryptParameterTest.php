@@ -43,6 +43,7 @@ class DecryptParameterTest extends \PHPUnit_Framework_TestCase
             [
                 'shopLogin' => $this->shopLogin,
                 'CryptedString' => $this->CryptedString,
+                'apikey' => null,
             ]
         );
         $this->assertEquals($this->CryptedString, $this->decryptParam->CryptedString);
@@ -54,6 +55,7 @@ class DecryptParameterTest extends \PHPUnit_Framework_TestCase
         $expect = [
             'shopLogin' => $this->shopLogin,
             'CryptedString' => $this->CryptedString,
+            'apikey' => null,
         ];
         $this->decryptParam->set('shopLogin', $this->shopLogin);
         $this->decryptParam->set('CryptedString', $this->CryptedString);
@@ -65,6 +67,7 @@ class DecryptParameterTest extends \PHPUnit_Framework_TestCase
         $expect = [
             'shopLogin' => $this->shopLogin,
             'CryptedString' => $this->CryptedString,
+            'apikey' => null,
         ];
         $decryptParamFromArray = new DecryptParameter();
         $decryptParamFromArray->fromArray($expect);
