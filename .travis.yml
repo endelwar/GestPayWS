@@ -5,6 +5,12 @@ env:
 
 language: php
 
+install:
+  - composer self-update
+  # We do not use it in unit tests.
+  - composer remove --dev friendsofphp/php-cs-fixer
+  - composer install
+
 sudo: false
 
 cache:
@@ -28,25 +34,23 @@ before_install:
   - pip install --user codecov
 
 before_script:
-    - composer self-update
-    - composer install
-    - mkdir -p build/logs
-    - if [ $(phpenv version-name) = "7.1" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
-    - if [ $(phpenv version-name) = "7.1" ]; then chmod +x ./cc-test-reporter; fi
-    - if [ $(phpenv version-name) = "7.1" ]; then ./cc-test-reporter before-build; fi
+  - mkdir -p build/logs
+  - if [ $(phpenv version-name) = "7.1" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
+  - if [ $(phpenv version-name) = "7.1" ]; then chmod +x ./cc-test-reporter; fi
+  - if [ $(phpenv version-name) = "7.1" ]; then ./cc-test-reporter before-build; fi
 
 script:
-    - php vendor/bin/phpunit -c phpunit.xml.dist
+  - php vendor/bin/phpunit -c phpunit.xml.dist
 
 after_script:
-    - wget https://scrutinizer-ci.com/ocular.phar
-    - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
-    - cp build/logs/clover.xml clover.xml
-    - if [ $(phpenv version-name) = "7.1" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
+  - cp build/logs/clover.xml clover.xml
+  - if [ $(phpenv version-name) = "7.1" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
 
 after_success:
-  - codecov
-  - travis_retry php vendor/bin/php-coveralls -v
+  - if [ $(phpenv version-name) = "7.1" ]; then codecov; fi
+  - if [ $(phpenv version-name) = "7.1" ]; then travis_retry php vendor/bin/php-coveralls -v; fi
 
 git:
   depth: 5
