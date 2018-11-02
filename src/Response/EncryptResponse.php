@@ -23,7 +23,7 @@ namespace EndelWar\GestPayWS\Response;
 class EncryptResponse extends Response
 {
     protected $paymentPageUrl = [
-        'test' => 'https://testecomm.sella.it/pagam/pagam.aspx',
+        'test' => 'https://sandbox.gestpay.net/pagam/pagam.aspx',
         'production' => 'https://ecomm.sella.it/pagam/pagam.aspx',
     ];
     protected $parametersName = [
