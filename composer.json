@@ -29,6 +29,9 @@
   },
   "require": {
     "php": ">=5.6.7",
+    "ext-dom": "*",
+    "ext-json": "*",
+    "ext-libxml": "*",
     "ext-openssl": "*",
     "ext-soap": "*",
     "ext-simplexml": "*"
