@@ -10,6 +10,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Remove support for EOL PHP version: PHP 5.6.7 required
 
+### Fixed
+- Update sandbox urls
+
 ## [1.3.1] - 2018-02-09
 ### Fixed
 - Update sandbox urls
