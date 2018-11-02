@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
+
+## [1.4.0]
 ### Added
 - Add support for `apikey` parameter
 - Add `~` to invalid chars in string
@@ -66,13 +68,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - WSCryptDecryptSoapClient class
 - PHPUnit Test Suite
 
-[unreleased]: https://github.com/endelwar/GestPayWS/compare/v1.3.1...HEAD
-[1.3.1]: https://github.com/endelwar/GestPayWS/compare/v1.3.0...v1.3.1
-[1.3.0]: https://github.com/endelwar/GestPayWS/compare/v1.2.1...v1.3.0
-[1.2.1]: https://github.com/endelwar/GestPayWS/compare/v1.2.0...v1.2.1
-[1.2.0]: https://github.com/endelwar/GestPayWS/compare/v1.1.2...v1.2.0
-[1.1.2]: https://github.com/endelwar/GestPayWS/compare/v1.1.1...v1.1.2
-[1.1.1]: https://github.com/endelwar/GestPayWS/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/endelwar/GestPayWS/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/endelwar/GestPayWS/compare/v0.1.0...v1.0.0
-[0.1.0]: https://github.com/endelwar/GestPayWS/compare/67d07c5c9c4d1873ba9620af25b91e0a53664d80...v0.1.0
+[unreleased]: https://github.com/pepeverde/GestPayWS/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/pepeverde/GestPayWS/compare/v1.3.1...v1.4.0
+[1.3.1]: https://github.com/pepeverde/GestPayWS/compare/v1.3.0...v1.3.1
+[1.3.0]: https://github.com/pepeverde/GestPayWS/compare/v1.2.1...v1.3.0
+[1.2.1]: https://github.com/pepeverde/GestPayWS/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/pepeverde/GestPayWS/compare/v1.1.2...v1.2.0
+[1.1.2]: https://github.com/pepeverde/GestPayWS/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/pepeverde/GestPayWS/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/pepeverde/GestPayWS/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/pepeverde/GestPayWS/compare/v0.1.0...v1.0.0
+[0.1.0]: https://github.com/pepeverde/GestPayWS/compare/67d07c5c9c4d1873ba9620af25b91e0a53664d80...v0.1.0
