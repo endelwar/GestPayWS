@@ -22,6 +22,8 @@ abstract class Parameter implements \ArrayAccess
 
     protected $mandatoryParameters = [];
 
+    protected $specialValidationParameters = [];
+
     /**
      * @param array $parameters
      */

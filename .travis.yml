@@ -4,26 +4,35 @@ env:
     - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
 
 language: php
-
-install:
-  - composer self-update
-  # We do not use it in unit tests.
-  - composer remove --dev friendsofphp/php-cs-fixer
-  - composer install
-
+dist: xenial
 sudo: false
+
+addons:
+  apt:
+    packages:
+      - libonig-dev
 
 cache:
   directories:
     - $HOME/.composer/cache
-
 php:
   - 5.6
   - 7.0
   - 7.1
   - 7.2
   - 7.3
+  - 7.4snapshot
   - nightly
+
+git:
+  depth: 5
+
+install:
+  - composer self-update
+  # We do not use it in unit tests.
+  - composer remove --dev friendsofphp/php-cs-fixer phpstan/phpstan
+  # Use --ignore-platform-reqs, allows testing on nightly, which is PHP 8.
+  - composer install --ignore-platform-reqs
 
 matrix:
   fast_finish: true
@@ -51,6 +60,3 @@ after_script:
 after_success:
   - if [ $(phpenv version-name) = "7.1" ]; then codecov; fi
   - if [ $(phpenv version-name) = "7.1" ]; then travis_retry php vendor/bin/php-coveralls -v; fi
-
-git:
-  depth: 5

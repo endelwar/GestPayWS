@@ -11,25 +11,26 @@
 
 namespace EndelWar\GestPayWS\Parameter;
 
+use EndelWar\GestPayWS\Parameter\Validator\ParameterValidatorFactory;
 use InvalidArgumentException;
 
 /**
  * Class EncryptParameter
  *
  * @property string $shopLogin
- * @property int $uicCode;
- * @property float $amount;
- * @property string $shopTransactionId;
- * @property string $apikey;
- * @property string $buyerName;
- * @property string $buyerEmail;
- * @property int $languageId;
- * @property string $customInfo;
- * @property string $requestToken;
- * @property string $ppSellerProtection;
- * @property string $shippingDetails;
- * @property string $paymentTypes;
- * @property string $paymentTypeDetail;
+ * @property int    $uicCode
+ * @property float  $amount
+ * @property string $shopTransactionId
+ * @property string $apikey
+ * @property string $buyerName
+ * @property string $buyerEmail
+ * @property int    $languageId
+ * @property string $customInfo
+ * @property string $requestToken
+ * @property string $ppSellerProtection
+ * @property string $shippingDetails
+ * @property string $paymentTypes
+ * @property string $paymentTypeDetail
  */
 class EncryptParameter extends Parameter
 {
@@ -69,62 +70,28 @@ class EncryptParameter extends Parameter
         'payPalBillingAgreementDescription'
         */
     ];
+
     protected $mandatoryParameters = [
         'shopLogin',
         'uicCode',
         'amount',
         'shopTransactionId',
     ];
+
     protected $separator = '*P1*';
     private $customInfoArray = [];
 
-    /** @see https://api.gestpay.it/#encrypt */
-    private $invalidChars = [
-        '&',
-        ' ',
-        '§', //need also to be added programmatically, because UTF-8
-        '(',
-        ')',
-        '*',
-        '<',
-        '>',
-        ',',
-        ';',
-        ':',
-        '*P1*',
-        '/',
-        '[',
-        ']',
-        '?',
-        '=',
-        '--',
-        '/*',
-        '%',
-        '//',
-        '~',
-    ];
-    private $invalidCharsFlattened = '';
-
-    /**
-     * @param array $parameters
-     */
-    public function __construct(array $parameters = [])
-    {
-        $this->invalidChars[] = chr(167); //§ ascii char
-
-        parent::__construct($parameters);
-    }
-
     /**
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
      */
     public function set($key, $value)
     {
         if (!in_array($key, $this->parametersName, true)) {
             throw new InvalidArgumentException(sprintf('%s is not a valid parameter name.', $key));
         }
-        $this->verifyParameterValidity($value);
+
+        $this->verifyParameterValidity($key, $value);
         parent::set($key, $value);
     }
 
@@ -137,11 +104,9 @@ class EncryptParameter extends Parameter
             $this->data['customInfo'] = $customInfo;
         } else {
             //check string validity
-
             foreach ($customInfo as $key => $value) {
                 $value = urlencode($value);
-                $this->verifyParameterValidity($key);
-                $this->verifyParameterValidity($value);
+                $this->verifyCustomInfoValidity($key, $value);
 
                 if (strlen($value) > 300) {
                     $value = substr($value, 0, 300);
@@ -169,20 +134,35 @@ class EncryptParameter extends Parameter
     }
 
     /**
-     * @param $value
+     * @param string $key
+     * @param string $value
+     *
      * @return bool
      */
-    public function verifyParameterValidity($value)
+    public function verifyParameterValidity($key, $value)
     {
-        if ('' === $this->invalidCharsFlattened) {
-            $invalidCharsQuoted = array_map('preg_quote', $this->invalidChars);
-            $this->invalidCharsFlattened = implode('|', $invalidCharsQuoted);
+        $validator = ParameterValidatorFactory::getValidator($key);
+        if ($validator->isValid($value) === false) {
+            throw new InvalidArgumentException(
+                sprintf('Parameter "%s" contains invalid chars (i.e.: "%s").', $value, '"'. implode('","', $validator->getInvalidChars($value)) . '"')
+            );
         }
 
-        if (preg_match_all('#' . $this->invalidCharsFlattened . '#', $value, $matches)) {
-            $invalidCharsMatched = '"' . implode('", "', $matches[0]) . '"';
+        return true;
+    }
+
+    public function verifyCustomInfoValidity($key, $value)
+    {
+        $validator = ParameterValidatorFactory::getValidator('customInfo');
+        if ($validator->isValid($key) === false) {
             throw new InvalidArgumentException(
-                'String ' . $value . ' contains invalid chars (i.e.: ' . $invalidCharsMatched . ').'
+                sprintf('Parameter "%s" contains invalid chars (i.e.: "%s").', $key, '"'. implode('","', $validator->getInvalidChars($value)) . '"')
+            );
+        }
+
+        if ($validator->isValid($value) === false) {
+            throw new InvalidArgumentException(
+                sprintf('Parameter "%s" contains invalid chars (i.e.: "%s").', $value, '"'. implode('","', $validator->getInvalidChars($value)) . '"')
             );
         }
 

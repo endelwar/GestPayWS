@@ -125,8 +125,8 @@ trait ArrayAccessTrait
 
     /**
      * Magic setter, calls setXXX if exists.
-     * @param $key
-     * @param $value
+     * @param string $key
+     * @param mixed $value
      *
      * @throws \InvalidArgumentException
      * @return mixed

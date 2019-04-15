@@ -24,8 +24,10 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
         'shopTransactionId' => 123,
     ];
 
-    protected function setUp()
+    public function __construct($name = null, array $data = [], $dataName = '')
     {
+        parent::__construct($name, $data, $dataName);
+
         $this->encryptParam = new EncryptParameter();
     }
 
@@ -145,42 +147,46 @@ class EncryptParameterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider goodValuesProvider
-     * @param mixed $value
+     *
+     * @param string $key
+     * @param mixed  $value
      */
-    public function testVerifyParameterValidity($value)
+    public function testVerifyParameterValidity($key, $value)
     {
-        $this->assertTrue($this->encryptParam->verifyParameterValidity($value));
+        $this->assertTrue($this->encryptParam->verifyParameterValidity($key, $value));
     }
 
     public function goodValuesProvider()
     {
         return [
-            [$this->validData['shopLogin']],
-            [Currency::EUR],
-            [$this->validData['amount']],
-            [$this->validData['shopTransactionId']],
+            ['shopLogin', $this->validData['shopLogin']],
+            ['uicCode', Currency::EUR],
+            ['amount', $this->validData['amount']],
+            ['shopTransactionId', $this->validData['shopTransactionId']],
         ];
     }
 
     /**
      * @dataProvider badValuesProvider
      * @expectedException \InvalidArgumentException
-     * @param mixed $value
+     *
+     * @param string $key
+     * @param string $value
      */
-    public function testVerifyParameterValidityException($value)
+    public function testVerifyParameterValidityException($key, $value)
     {
-        $this->encryptParam->verifyParameterValidity($value);
+        $this->encryptParam->verifyParameterValidity($key, $value);
     }
 
     public function badValuesProvider()
     {
         return [
-            ['str§'],
-            ['§str'],
-            ['str*P1*str'],
-            ['/*this is a comment*/'],
-            ['str' . chr(167) . 'str'],
-            ['str1&str2&str3'],
+            ['shopLogin', 'str§'],
+            ['shopLogin', '§str'],
+            ['shopLogin', 'str*P1*str'],
+            ['shopLogin', '/*this is a comment*/'],
+            ['shopLogin', 'str' . chr(167) . 'str'],
+            ['shopLogin', 'str1&str2&str3'],
         ];
     }
 

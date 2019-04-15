@@ -17,7 +17,7 @@ namespace EndelWar\GestPayWS\Data;
 abstract class Data
 {
     /**
-     * @param $costantName
+     * @param string $costantName
      * @return bool|mixed
      */
     public static function getCode($costantName)

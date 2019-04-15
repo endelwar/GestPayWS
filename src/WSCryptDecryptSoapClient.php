@@ -11,6 +11,9 @@
 
 namespace EndelWar\GestPayWS;
 
+use SoapClient;
+use SoapFault;
+
 class WSCryptDecryptSoapClient
 {
     protected $wsdlUrl = [
@@ -23,13 +26,16 @@ class WSCryptDecryptSoapClient
         'test' => 'sandbox.gestpay.net',
         'production' => 'ecomms2s.sella.it',
     ];
-    /** @var \soapClient $soapClient */
+    /** @var soapClient $soapClient */
     protected $soapClient;
     public $version = '1.4.0';
 
     /**
      * WSCryptDecryptSoapClient constructor.
+     *
      * @param bool|false $testEnv enable the test environment
+     *
+     * @throws SoapFault
      */
     public function __construct($testEnv = false)
     {
@@ -44,7 +50,7 @@ class WSCryptDecryptSoapClient
             $soapClientEnvironmentOption = $this->setProductionEnvironment();
         }
         $soapClientOption = array_merge($soapClientDefaultOption, $soapClientEnvironmentOption);
-        $this->soapClient = new \soapClient($this->wsdlUrl[$this->wsdlEnvironment], $soapClientOption);
+        $this->soapClient = new SoapClient($this->wsdlUrl[$this->wsdlEnvironment], $soapClientOption);
     }
 
     /**
@@ -99,7 +105,7 @@ class WSCryptDecryptSoapClient
     }
 
     /**
-     * @return \soapClient
+     * @return soapClient
      */
     public function getSoapClient()
     {
